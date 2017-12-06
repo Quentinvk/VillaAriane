@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { CarouselComponent } from './carousel/carousel.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -7,6 +8,8 @@ import { AppComponent } from './app.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { BookingComponent } from './booking/booking.component';
 import { GalleryComponent } from './gallery/gallery.component';
+import { StudioComponent } from './studio/studio.component';
+import { WheaterComponent } from './wheater/wheater.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,10 @@ import { GalleryComponent } from './gallery/gallery.component';
     CalendarComponent,
     CarouselComponent,
     BookingComponent,
-    GalleryComponent
+    GalleryComponent,
+    StudioComponent,
+    WheaterComponent,
+    FormsModule
   ],
   imports: [
     BrowserModule,

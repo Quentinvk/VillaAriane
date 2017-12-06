@@ -6,10 +6,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  public isCollapsed = true;
+  show : string = "Show Calendar";
 
-  constructor() { }
 
-  ngOnInit() {
+  constructor() { 
   }
 
+  ngOnInit() {
+
+  }
+  
+  changeButtonLabel(){
+      if(this.isCollapsed===false){
+        this.show= "Hide Calendar";
+      }
+      else
+        this.show="Show Calendar";
+  }
 }

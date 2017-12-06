@@ -1,7 +1,8 @@
-<section class="main">
+
 <ngb-tabset justify="justified">
 <ngb-tab title="Home" >
   <ng-template ngbTabContent>
+    <section>
       <app-carousel></app-carousel>
       <p>
           <button type="button" class="btn btn-outline-primary" (click)="isCollapsed = !isCollapsed "
@@ -17,6 +18,11 @@
             </div>
           </div>
         </div>
+      </section>
+        <Section class="wheater">
+          <app-wheater></app-wheater>
+          Some wheater api here.
+        </Section>
   </ng-template>
 </ngb-tab>
 <ngb-tab>
@@ -36,9 +42,6 @@
     </ng-template>
   </ngb-tab>
 </ngb-tabset>
-</section>
-<Section class="wheater">
-  <app-wheater></app-wheater>
-  Some wheater api here.
-</Section>
+
+
 //first view on gallery

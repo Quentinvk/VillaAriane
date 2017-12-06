@@ -20,8 +20,7 @@ import { WheaterComponent } from './wheater/wheater.component';
     BookingComponent,
     GalleryComponent,
     StudioComponent,
-    WheaterComponent,
-    FormsModule
+    WheaterComponent
   ],
   imports: [
     BrowserModule,

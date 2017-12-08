@@ -1,3 +1,4 @@
+import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { CarouselComponent } from './carousel/carousel.component';
 import { HomeComponent } from './home/home.component';
@@ -20,7 +21,8 @@ import { WheaterComponent } from './wheater/wheater.component';
     BookingComponent,
     GalleryComponent,
     StudioComponent,
-    WheaterComponent
+    WheaterComponent,
+    HttpModule
   ],
   imports: [
     BrowserModule,

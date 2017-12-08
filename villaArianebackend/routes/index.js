@@ -7,3 +7,20 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;
+let mongoose = require('mongoose');
+let Book = mongoose.model('Book');
+
+// router.get('/Api/book/', function(req, res, next){
+//   Recipe.find(function(err, book) {
+//     if (err) { return next(err); }
+//     res.json(recipes);
+//   });
+// });
+
+router.post('/API/book/', function (req, res, next) {
+  let book = new Book(req.body);
+  recipe.save(function(err, rec) {
+    if (err){ return next(err); }
+    res.json(rec);
+  });
+}); 

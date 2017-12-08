@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var mongoose = require('mongoose');
-
+require('./models/Book');
 mongoose.connect('mongodb://localhost/recipedb', {  useMongoClient: true });
 var app = express();
 

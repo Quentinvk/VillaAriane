@@ -8,31 +8,23 @@ import { Booking } from '../booking/booking.model';
 @Component({
   selector: 'app-add-booking',
   templateUrl: './add-booking.component.html',
-  styleUrls: ['./add-booking.component.css'],
-  providers:[BookingDataService]
+  styleUrls: ['./add-booking.component.css']
 })
 export class AddBookingComponent implements OnInit {
   @Output() public newbooking = new EventEmitter<Booking>();
-  private _bookings : Booking[];
   private booking: FormGroup;
 
-  constructor(private fb: FormBuilder, private _bookingDataService: BookingDataService, private _router: Router) {
-      this._bookings = this._bookingDataService.bookings;
-   }
-   ngOnInit() {
-    
+  constructor(private fb: FormBuilder, private _bookingDataService: BookingDataService, private _router: Router) { }
+
+  get firstName(): FormArray {
+    return <FormArray>this.booking.get('firstName');
   }
-  
-  newBookingAdded(booking){
-    this._bookingDataService.addNewBooking(booking);
-  }
-  
-  // get firstName(): FormArray {
-  //   return <FormArray>this.booking.get('firstName');
-  // }
   
 
-  
+  ngOnInit() {
+    
+  }
+
   // createIngredients(): FormGroup {
   //   return this.fb.group({
   //     amount: [''],

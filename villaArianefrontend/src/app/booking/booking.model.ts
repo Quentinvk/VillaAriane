@@ -1,4 +1,4 @@
-export class booking{
+export class Booking{
     private _firstName : String;
     private _lastName : String;
     private _startNight : Date;
@@ -7,7 +7,7 @@ export class booking{
     private _wantsSheet : Boolean;
     private _PricePerNight = 60;
     private _PricePerSheet: Number = 5;
-    constructor(firstname:string, lastName:string,startNight : Date, endNight : Date,private NrOfPersons : number,private wantsSheet : Boolean){
+    constructor(firstname:string, lastName:string,startNight : Date, endNight : Date, private NrOfPersons : number,private wantsSheet : Boolean){
         this._firstName=firstname;
         this._lastName=lastName;
         this._startNight=startNight;

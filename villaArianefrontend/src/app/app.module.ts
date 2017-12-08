@@ -10,6 +10,7 @@ import { BookingComponent } from './booking/booking.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { StudioComponent } from './studio/studio.component';
 import { WheaterComponent } from './wheater/wheater.component';
+import { AddBookingComponent } from './add-booking/add-booking.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { WheaterComponent } from './wheater/wheater.component';
     BookingComponent,
     GalleryComponent,
     StudioComponent,
-    WheaterComponent
+    WheaterComponent,
+    AddBookingComponent
   ],
   imports: [
     BrowserModule,

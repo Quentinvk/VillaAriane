@@ -14,5 +14,10 @@
 
 <hr>
 
-<pre>From: {{ fromDate | json }} </pre>
-<pre>To: {{ toDate | json }} </pre>
+<div>
+  <pre>From: {{ fromDate.day}}/{{fromDate.month}}/{{fromDate.year}} </pre>
+  <pre>To: {{ toDate.day}}/{{toDate.month}}/{{toDate.year}} </pre>
+</div>
+
+<button class="btn btn-success" (click)="bookNow('fromDate','toDate')" (click)="display('AddBookingComponent')" >Book now</button>
+<!-- <app-add-booking></app-add-booking> -->

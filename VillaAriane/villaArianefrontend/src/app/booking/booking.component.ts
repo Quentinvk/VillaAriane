@@ -8,6 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class BookingComponent implements OnInit {
   @Input() public booking : Booking;
+
+  
   constructor() { }
 
   ngOnInit() {

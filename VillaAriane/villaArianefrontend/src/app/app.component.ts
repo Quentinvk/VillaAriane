@@ -19,4 +19,7 @@ export class AppComponent {
   newBookingAdded(booking){
     this._bookingDataService.addNewBooking(booking);
   }
+  getPrice(booking) : number{
+    return this._bookingDataService.getPrice(booking);
+  }
 }

@@ -1,12 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Booking } from './booking/booking.model';
 
+
+
 @Injectable()
 export class BookingDataService {
-public _bookings = new Array<Booking>();
+
+  private readonly _appUrl = 'http://localhost:4200/API/bookings/';  
+
+  public _bookings = new Array<Booking>();
   constructor() {
+
    }
-   get bookings() : Booking[] {
+   get bookings(): Booking[]  {
       return this._bookings;
    }
 

@@ -1,3 +1,4 @@
+import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { CarouselComponent } from './carousel/carousel.component';
 import { HomeComponent } from './home/home.component';
@@ -26,7 +27,9 @@ import { AddBookingComponent } from './add-booking/add-booking.component';
   ],
   imports: [
     BrowserModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

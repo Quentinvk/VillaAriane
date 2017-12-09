@@ -13,7 +13,7 @@ export class AppComponent {
 
   private _bookings: Booking[];
   constructor(private _bookingDataService : BookingDataService ){
-    this._bookings=_bookingDataService.bookings;
+    this._bookings=this._bookingDataService.bookings;
     
   }
   newBookingAdded(booking){

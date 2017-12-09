@@ -1,4 +1,4 @@
-<ngb-datepicker #dp ngModel (ngModelChange)="onDateChange($event)" [displayMonths]="2" [dayTemplate]="t">
+<ngb-datepicker #dp [(ngModel)]="model" (ngModelChange)="onDateChange($event)" [displayMonths]="2" [dayTemplate]="t">
 </ngb-datepicker>
 
 <ng-template #t let-date="date" let-focused="focused">
@@ -15,8 +15,8 @@
 <hr>
 
 <div>
-  <pre>From: {{ fromDate.day}}/{{fromDate.month}}/{{fromDate.year}} </pre>
-  <pre>To: {{ toDate.day}}/{{toDate.month}}/{{toDate.year}} </pre>
+  <pre>From night: {{ fromDate.day}}/{{fromDate.month}}/{{fromDate.year}} </pre>
+  <pre>To night: {{ toDate.day}}/{{toDate.month}}/{{toDate.year}} included</pre>
 </div>
 
 <button class="btn btn-success" (click)="bookNow('fromDate','toDate')" (click)="display('AddBookingComponent')" >Book now</button>

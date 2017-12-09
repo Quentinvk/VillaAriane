@@ -37,8 +37,6 @@ export class Booking{
             endNight : this._endNight,
             NrOfPersons : this._nrOfPersons,
             wantsSheet : this._wantsSheet,
-
-
-        }
+          }
     }
 }

@@ -28,7 +28,7 @@ import { AddBookingComponent } from './add-booking/add-booking.component';
   imports: [
     BrowserModule,
     NgbModule.forRoot(),
-    
+    HttpModule,
     FormsModule
   ],
   providers: [],

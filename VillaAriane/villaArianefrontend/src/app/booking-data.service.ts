@@ -10,7 +10,7 @@ export class BookingDataService {
 
   public _bookings = new Array<Booking>();
   constructor() {
-
+      
    }
    get bookings(): Booking[]  {
       return this._bookings;

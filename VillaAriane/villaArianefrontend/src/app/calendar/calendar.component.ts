@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NgbDateStruct, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 import { AddBookingComponent } from '../add-booking/add-booking.component';
 import { EventEmitter } from '@angular/core/src/event_emitter';
+import { NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap/datepicker/datepicker-config';
 
 const equals = (one: NgbDateStruct, two: NgbDateStruct) =>
 one && two && two.year === one.year && two.month === one.month && two.day === one.day;
@@ -26,9 +27,16 @@ export class CalendarComponent implements OnInit {
     fromDate: NgbDateStruct;
     toDate: NgbDateStruct;
     
-    constructor(calendar: NgbCalendar) {
+    constructor(calendar: NgbCalendar, config : NgbDatepickerConfig) {
       this.fromDate = calendar.getToday();
       this.toDate = calendar.getNext(calendar.getToday(), 'd', 3);
+
+      config.minDate = {year: calendar.getToday().year, month: calendar.getToday().month-1,day:calendar.getToday().day}
+      config.maxDate = {year: 2099, month: 12, day: 31};
+
+      // config.markDisabled = (date:NgbDateStruct) =>{
+        
+      // }
     }
   
     onDateChange(date: NgbDateStruct) {

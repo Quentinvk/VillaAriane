@@ -1,4 +1,4 @@
-<ngb-datepicker #dp [(ngModel)]="model" (ngModelChange)="onDateChange($event)" [displayMonths]="2" [dayTemplate]="t">
+<ngb-datepicker #dp ngModel [(ngModel)]="model" (ngModelChange)="onDateChange($event)" [displayMonths]="2" [dayTemplate]="t">
 </ngb-datepicker>
 
 <ng-template #t let-date="date" let-focused="focused">

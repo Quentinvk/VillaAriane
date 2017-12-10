@@ -24,3 +24,18 @@ router.post('/API/bookings/', function (req, res, next) {
     res.json(rec);
   });
 }); 
+
+
+router.param('booking', function(req, res, next, id) {
+  let query = Book.findById(id);
+  query.exec(function (err, booking){
+    if (err) { return next(err); }
+    if (!booking) { return next(new Error('not found ' + id)); }
+    req.booking = booking;
+    return next();
+  });
+}); 
+
+router.get('/API/booking/:booking', function(req, res) {
+  res.json(req.booking);
+});

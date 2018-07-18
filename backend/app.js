@@ -6,8 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/recipedb', {  useMongoClient: true });
-mongoose.Promise = require('bluebird');
+mongoose.connect('mongodb://localhost/arianedb', {  useMongoClient: true });
+
 require('./models/Book');
 
 var app = express();
@@ -25,11 +25,11 @@ var index = require('./routes/index');
 app.use('/', index);
 var users = require('./routes/users');
 app.use('/users', users);
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
+  console.log('appuse');
   next(err);
 });
 
@@ -41,7 +41,8 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  console.log('errorhandler?');
+  res.send({msg:err.message});
 });
   //promise catcher
   

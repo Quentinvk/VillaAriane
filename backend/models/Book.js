@@ -1,11 +1,10 @@
 var mongoose = require('mongoose');
 
 var BookingSchema = new mongoose.Schema({
-    firstName : String,
-    lastName : String,
+    userName : String,
     startNight : Date,
     endNight : Date,
-    NrOfPersons : Number,
+    nrOfPersons : Number,
     wantsSheet : Boolean
 
 });

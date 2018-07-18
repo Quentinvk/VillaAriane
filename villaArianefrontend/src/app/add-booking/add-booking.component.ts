@@ -11,14 +11,26 @@ import { Booking } from '../booking/booking.model';
   styleUrls: ['./add-booking.component.css']
 })
 export class AddBookingComponent implements OnInit {
-  @Output() public newbooking = new EventEmitter<Booking>();
-  private booking: FormGroup;
+   @Output() public newBooking = new EventEmitter<Booking>();
 
-  constructor(private fb: FormBuilder, private _bookingDataService: BookingDataService, private _router: Router) { }
+  
+   addBooking(newBookingFirstName:HTMLInputElement,newBookingLastName:HTMLInputElement,newBookingStartNight:HTMLInputElement,newBookingEndNight:HTMLInputElement,newBookingNrOfPersons:HTMLInputElement,newBookingWantsSheet:HTMLInputElement) : boolean{
+     let booking = new Booking(newBookingFirstName.value,newBookingLastName.value,newBookingStartNight.valueAsDate,newBookingEndNight.valueAsDate,newBookingNrOfPersons.valueAsNumber,newBookingWantsSheet.checked);
+     this.newBooking.emit(booking);
+     return false;
+   }
+    
+   newBookingAdded(){
+     //to db 
+   }
 
-  get firstName(): FormArray {
-    return <FormArray>this.booking.get('firstName');
-  }
+  // private booking: FormGroup;
+
+  // constructor(private fb: FormBuilder, private _bookingDataService: BookingDataService, private _router: Router) { }
+
+  // get firstName(): FormArray {
+  //   return <FormArray>this.booking.get('firstName');
+  // }
   
 
   ngOnInit() {

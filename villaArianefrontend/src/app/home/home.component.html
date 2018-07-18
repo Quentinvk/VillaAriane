@@ -1,4 +1,5 @@
 
+<section class="sections">
 <ngb-tabset justify="justified">
 <ngb-tab title="Home" >
   <ng-template ngbTabContent>
@@ -13,8 +14,10 @@
         <div id="collapseExample" [ngbCollapse]="isCollapsed">
           <div class="card">
             <div class="card-body">
-              
-      <app-calendar></app-calendar>
+              <span class="calendarcomp">
+                <app-calendar></app-calendar>
+              </span>
+      
             </div>
           </div>
         </div>

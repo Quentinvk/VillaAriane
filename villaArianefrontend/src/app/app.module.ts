@@ -12,6 +12,7 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { StudioComponent } from './studio/studio.component';
 import { WheaterComponent } from './wheater/wheater.component';
 import { AddBookingComponent } from './add-booking/add-booking.component';
+import { BookingsComponent } from './bookings/bookings.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AddBookingComponent } from './add-booking/add-booking.component';
     GalleryComponent,
     StudioComponent,
     WheaterComponent,
-    AddBookingComponent
+    AddBookingComponent,
+    BookingsComponent
   ],
   imports: [
     BrowserModule,

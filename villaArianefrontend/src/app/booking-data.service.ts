@@ -18,13 +18,13 @@ export class BookingDataService {
    get bookings(): Observable<Booking[]>  {
       return this.http.get(this._appUrl).map(response =>
         response.json().map(item =>
-          new Booking(item.firstName, item.lastName, item.startNight, item.endNight, item.nrofPersons, item.wantsSheet)));
+          new Booking(item.userName, item.startNight, item.endNight, item.nrofPersons, item.wantsSheet)));
    }
 
    addNewBooking(booking): Observable < Booking > {  
      return this.http.post(this._appUrl, booking)
        .map(res => res.json()).map(item =>
-         new Booking(item.firstName, item.lastName, item.startNight, item.endNight, item.nrofPersons, item.wantsSheet));
+         new Booking(item.userName, item.startNight, item.endNight, item.nrofPersons, item.wantsSheet));
    }
 
 

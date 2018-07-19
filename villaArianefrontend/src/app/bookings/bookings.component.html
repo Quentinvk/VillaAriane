@@ -1,0 +1,14 @@
+<h1> Already booked dates : </h1>
+
+<ul>
+  <li *ngFor="let booking of bookings$"></li>
+  <a >{{booking._userName}</a>
+
+  <ul>
+    <li>{{booking._startNight}}</li>
+    <li>{{booking._endNight}}</li>
+    <li>{{booking._totalPrice}}</li>
+    <li>{{booking._wantsSheet}}</li>
+    <li>{{booking._nrOfPersons}}</li>
+  </ul>
+</ul>

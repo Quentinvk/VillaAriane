@@ -1,6 +1,5 @@
 export class Booking{
-    private _firstName : String;
-    private _lastName : String;
+    private _userName : String;
     private _startNight : Date;
     private _endNight : Date;
     private _nrOfPersons : number;
@@ -8,9 +7,8 @@ export class Booking{
     private _pricePerNight = 60;
     private _pricePerSheet: Number = 5;
     private _totalPrice : number;
-    constructor(firstname:string, lastName:string,startNight : Date, endNight : Date, private NrOfPersons : number,private wantsSheet : Boolean){
-        this._firstName=firstname;
-        this._lastName=lastName;
+    constructor(userName : String ,startNight : Date, endNight : Date, private NrOfPersons : number,private wantsSheet : Boolean){
+        this._userName = userName;
         this._startNight=startNight;
         this._endNight=endNight;
         this._nrOfPersons=NrOfPersons;
@@ -31,8 +29,7 @@ export class Booking{
     }
     toJSON(){
         return {
-            firstName : this._firstName,
-            lastName : this._lastName,
+            userName : this._userName,
             startNight : this._startNight,
             endNight : this._endNight,
             NrOfPersons : this._nrOfPersons,

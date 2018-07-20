@@ -13,7 +13,7 @@ import { StudioComponent } from './studio/studio.component';
 import { WheaterComponent } from './wheater/wheater.component';
 import { AddBookingComponent } from './add-booking/add-booking.component';
 import { BookingsComponent } from './bookings/bookings.component';
-
+import {HttpClientModule} from '@angular/common/http'
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +32,7 @@ import { BookingsComponent } from './bookings/bookings.component';
     NgbModule.forRoot(),
     HttpModule,
     FormsModule,
-    
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

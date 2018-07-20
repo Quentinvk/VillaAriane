@@ -1,14 +1,24 @@
-<h1> Already booked dates : </h1>
+<h2> Already booked dates : </h2>
 
-<ul>
-  <li *ngFor="let booking of bookings$"></li>
+ <ul>
+  <li *ngFor="let booking of _bookings"></li>
   <a >{{booking._userName}</a>
 
   <ul>
-    <li>{{booking._startNight}}</li>
-    <li>{{booking._endNight}}</li>
+    <li>{{booking._startNight | date: 'dd/MM/yyyy'}}</li>
+    <li>{{booking._endNight | date: 'dd/MM/yyyy'}}</li>
     <li>{{booking._totalPrice}}</li>
     <li>{{booking._wantsSheet}}</li>
     <li>{{booking._nrOfPersons}}</li>
   </ul>
-</ul>
+</ul> 
+
+<!-- <div class="ui container">
+    
+    <div class="ui segment">
+      <div class="ui cards">
+        <app-booking *ngFor='let booking of bookings' 
+          [booking]='booking'></app-booking>
+      </div>
+    </div>
+  </div> -->

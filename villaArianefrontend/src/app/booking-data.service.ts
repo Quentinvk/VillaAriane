@@ -1,32 +1,43 @@
-import { Http, Response } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Booking } from './booking/booking.model';
-import { Observable } from 'rxjs/Rx';
-import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Observable';
+import { map } from '../../node_modules/rxjs/operators';
+
+
+
 
 
 @Injectable()
 export class BookingDataService {
 
-  private readonly _appUrl = 'http://localhost:4200/API/bookings/';  
+  private readonly _appUrl = '/API/bookings/';  
 
   public _bookings;
   
-  constructor(private http: Http) {
+  constructor(private http: HttpClient) {
       
    }
    get bookings(): Observable<Booking[]>  {
-      return this.http.get(this._appUrl).map(response =>
-        response.json().map(item =>
-          new Booking(item.userName, item.startNight, item.endNight, item.nrofPersons, item.wantsSheet)));
+
+    return this.http.get(this._appUrl)
+      .pipe(
+        map((list: any[]) : Booking[] =>
+        list.map(item => 
+        new Booking(item.userName, item.startNight, item.endNight, item.nrofPersons, item.wantsSheet)
+      )
+    )
+    );
    }
 
-   addNewBooking(booking): Observable < Booking > {  
+
+   addNewBooking(booking): Observable <Booking> {  
      return this.http.post(this._appUrl, booking)
-       .map(res => res.json()).map(item =>
-         new Booking(item.userName, item.startNight, item.endNight, item.nrofPersons, item.wantsSheet));
+       .pipe(map(
+         (item : any) : Booking =>
+         new Booking(item.userName, item.startNight, item.endNight, item.nrofPersons, item.wantsSheet)
+       ))
    }
-
 
    getPrice(booking):number{
      return booking.getPrice();

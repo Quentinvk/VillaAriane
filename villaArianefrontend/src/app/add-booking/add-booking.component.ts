@@ -13,16 +13,19 @@ import { Booking } from '../booking/booking.model';
 export class AddBookingComponent implements OnInit {
    @Output() public newBooking = new EventEmitter<Booking>();
 
+   constructor( private data : BookingDataService){
+
+   }
   
-   addBooking(newBookingFirstName:HTMLInputElement,newBookingLastName:HTMLInputElement,newBookingStartNight:HTMLInputElement,newBookingEndNight:HTMLInputElement,newBookingNrOfPersons:HTMLInputElement,newBookingWantsSheet:HTMLInputElement) : boolean{
-     let booking = new Booking(newBookingFirstName.value,newBookingLastName.value,newBookingStartNight.valueAsDate,newBookingEndNight.valueAsDate,newBookingNrOfPersons.valueAsNumber,newBookingWantsSheet.checked);
+   addBooking(newBookingUserName:HTMLInputElement,newBookingStartNight:HTMLInputElement,newBookingEndNight:HTMLInputElement,newBookingNrOfPersons:HTMLInputElement,newBookingWantsSheet:HTMLInputElement) : boolean{
+     let booking = new Booking(newBookingUserName.value,newBookingStartNight.valueAsDate,newBookingEndNight.valueAsDate,newBookingNrOfPersons.valueAsNumber,newBookingWantsSheet.checked);
      this.newBooking.emit(booking);
      return false;
    }
     
-   newBookingAdded(){
-     //to db 
-   }
+   newBookingAdded(booking){
+    this.data.addNewBooking(booking).subscribe();
+ }
 
   // private booking: FormGroup;
 

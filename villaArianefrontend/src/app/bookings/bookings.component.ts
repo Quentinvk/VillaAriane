@@ -8,14 +8,16 @@ import { Observable } from 'rxjs';
 })
 export class BookingsComponent implements OnInit {
 
-  bookings$ : Object;
+  private _bookings;
 
   constructor(private data : BookingDataService) { }
 
   ngOnInit() {
-    this.data._bookings().subscribe(
-      data => this.bookings$ = data
-    )
+    this._bookings = this.data._bookings;
+  }
+
+  get bookings() {
+    return this.data.bookings;
   }
 
 }

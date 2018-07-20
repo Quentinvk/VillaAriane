@@ -1,7 +1,26 @@
-<!-- <div class="ui container">
-  <app-add-recipe (newBooking)="newBookingAdded($event)"></app-add-recipe>
-  <div class="ui grid segment">
-    <app-recipe *ngFor="let recipe of recipes" [recipe]="recipe">
-    </app-recipe>
+<div class="ui large form segment">
+    <h3 class="ui header">Add booking</h3>
+    <div class="field">
+      <ul>
+        <li><label for="userName">Username:</label> 
+          <input id="userName" name="userName" #newbookingUserName></li>
+        <li><label for="startNight">Startnight:</label>
+          <input id="startNight" name="startNight" #newbookingStartNight>
+        </li>
+        <li> <label for="endNight">EndNight:</label>
+          <input id="endNight" name="startNight" #newbookingEndNight>
+        </li>
+        <li> <label for="nrOfPersons">How many are joining you?</label>
+          <input id="nrOfPersons" name="nrOfPersons" #newbookingNrOfPersons>
+        </li>
+        <li> <label for="wantsSheet">Do you wish sheets? </label>
+          <input id="wantsSheet" name="wantsSheet" #newbookingWantsSheet>
+        </li>
+      </ul>
+      
+    </div>
+    <button (click)="addBooking(newbookingUserName,newbookingStartNight,newbookingEndNight,newbookingNrOfPersons,newbookingWantsSheet)"
+          class="ui positive right floated button">
+      add booking 
+    </button>
   </div>
-</div> -->

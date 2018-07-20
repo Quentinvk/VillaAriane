@@ -10,7 +10,6 @@ router.get('/', function(req, res, next) {
 router.get('/API/bookings/', function(req, res, next) {
   Book.find(function(err, bookings) {
     if (err) { 
-      console.log("geterror");
       return next(err); }
     res.json(bookings);
   });
@@ -20,7 +19,6 @@ router.post('/API/bookings/', function (req, res, next) {
   let book = new Book(req.body);
  book.save(function(err, rec) {
     if (err){ 
-      console.log("posterror");
       return next(err); }
     res.json(rec);
   });

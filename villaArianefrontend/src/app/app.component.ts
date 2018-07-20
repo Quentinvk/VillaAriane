@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   
   title = 'Villa Ariane';
 
-  private _bookings;
+  private _bookings : Booking[];
 
   ngOnInit() {
      this._bookings = this._bookingDataService._bookings;
@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
     return this._bookings;
   }
   newBookingAdded(booking){
-     this._bookingDataService.addNewBooking(booking).subscribe();
+     this._bookingDataService.addNewBooking(booking).subscribe(item => this._bookings.push(item));
   }
    
 

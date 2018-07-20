@@ -13,6 +13,7 @@ import { Booking } from '../booking/booking.model';
 export class AddBookingComponent implements OnInit {
    @Output() public newBooking = new EventEmitter<Booking>();
 
+   
    constructor( private data : BookingDataService){
 
    }
@@ -23,9 +24,7 @@ export class AddBookingComponent implements OnInit {
      return false;
    }
     
-   newBookingAdded(booking){
-    this.data.addNewBooking(booking).subscribe();
- }
+   
 
   // private booking: FormGroup;
 

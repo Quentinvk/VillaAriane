@@ -1,5 +1,5 @@
 import { BookingDataService } from '../booking-data.service';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
@@ -14,7 +14,7 @@ export class AddBookingComponent implements OnInit {
    @Output() public newBooking = new EventEmitter<Booking>();
 
    
-   constructor( private data : BookingDataService){
+   constructor( private fb : FormBuilder){
 
    }
   
@@ -26,17 +26,25 @@ export class AddBookingComponent implements OnInit {
     
    
 
-  // private booking: FormGroup;
-
-  // constructor(private fb: FormBuilder, private _bookingDataService: BookingDataService, private _router: Router) { }
-
-  // get firstName(): FormArray {
-  //   return <FormArray>this.booking.get('firstName');
-  // }
-  
+  private booking: FormGroup;
 
   ngOnInit() {
-    
+      this.booking = this.fb.group({
+        userName: this.fb.control(' ', [Validators.required, Validators.minLength(3)]), 
+        startNight: this.fb.control( new Date() ,Validators.required),
+        endNight: this.fb.control(new Date(), Validators.required),
+        nrOfPersons: this.fb.control('1'),
+        wantsSheet: this.fb.control('false')
+      })
+  }
+
+  onSubmit(){
+    this.newBooking.emit(new Booking(
+      this.booking.value.userName, 
+      this.booking.value.startNight, 
+      this.booking.value.endNight, 
+      this.booking.value.nrOfPersonsm, 
+      this.booking.value.wantsSheet));
   }
 
   // createIngredients(): FormGroup {

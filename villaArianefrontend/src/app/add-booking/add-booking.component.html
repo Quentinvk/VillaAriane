@@ -1,4 +1,4 @@
-<div class="ui large form segment">
+<!-- <div class="ui large form segment">
     <h3 class="ui header">Add booking</h3>
     <div class="field">
       <ul>
@@ -23,4 +23,32 @@
           class="ui positive right floated button">
       add booking 
     </button>
+  </div> -->
+
+  <form [formGroup] = 'booking' (ngSubmit) = 'onSubmit()'>
+    <h3>Add Booking</h3>
+    <div>
+      <label for='userName_id'>username:</label>
+      <input type="text" id="userName_id" formControlName = 'userName' #spy>
+      <div *ngIf='booking.get("userName").errors?.required && booking.get("userName").touched' 
+    class='ui pointing red basic label'>
+    error! this is required
   </div>
+      <label for='startNight_id'>startNight:</label>
+      <input type="date" id="startNight_id" formControlName = 'startNight' >
+      <label for='endNight_id'>endNight:</label>
+      <input type="date" id="endNight_id" formControlName = 'endNight'>
+      <label for='nrOfPersons_id'>number of Persons:</label>
+      <select id="nrOfPersons_id" formControlName = 'nrOfPersons'>
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
+      <label for='wantsSheet_id'>Do you wish sheets?</label>
+      <input type="checkbox" id="wantsSheet_id" formControlName = 'wantsSheet'>
+    </div>
+    <div>
+      <button type="button" >add</button>
+    </div>
+  </form>
+  REMOVE {{ booking.value | json }} {{ booking.valid }}
+{{booking.get("userName").errors |json}}

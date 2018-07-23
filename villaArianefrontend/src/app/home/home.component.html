@@ -1,6 +1,6 @@
 
 <section class="sections">
-<ngb-tabset justify="justified">
+<ngb-tabset justify="justified" [orientation]="currentOrientation">
 <ngb-tab title="Home" >
   <ng-template ngbTabContent>
     <section>
@@ -56,5 +56,13 @@
         <app-add-booking></app-add-booking>
       </ng-template>
     </ngb-tab>
+    <ngb-tab>
+      <ng-template ngbTabTitle><b>Reviews</b></ng-template>
+      <ng-template ngbTabContent>
+        
+      </ng-template>
+    </ngb-tab>
 </ngb-tabset>
+
+
 

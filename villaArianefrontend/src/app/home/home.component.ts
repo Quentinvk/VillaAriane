@@ -9,7 +9,7 @@ export class HomeComponent implements OnInit {
   
   public isCollapsed = true;
   show : string = "Show Calendar";
-
+  currentOrientation = 'horizontal'
 
   constructor() { 
   }

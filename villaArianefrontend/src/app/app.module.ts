@@ -15,6 +15,12 @@ import { AddBookingComponent } from './add-booking/add-booking.component';
 import { BookingsComponent } from './bookings/bookings.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
+import {RouterModule, Routes} from '@angular/router';
+
+const appRoutes: Routes = [
+  {path: 'bookings', component: BookingsComponent}, 
+  { path: 'add-booking', component: AddBookingComponent}
+];
 
 @NgModule({
   declarations: [
@@ -35,7 +41,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     HttpModule,
     FormsModule,
     HttpClientModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule, 
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]

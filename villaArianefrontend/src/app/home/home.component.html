@@ -1,6 +1,5 @@
-
 <section class="sections">
-<ngb-tabset justify="justified" [orientation]="currentOrientation">
+<ngb-tabset justify="justified" type="pills" [orientation]="currentOrientation" class="nav">
 <ngb-tab title="Home" >
   <ng-template ngbTabContent>
     <section>
@@ -53,7 +52,9 @@
   <ngb-tab>
       <ng-template ngbTabTitle><b>add booking</b></ng-template>
       <ng-template ngbTabContent>
-        <app-add-booking></app-add-booking>
+        <app-add-booking>
+          (newBooking)="newBooking($event)"
+        </app-add-booking>
       </ng-template>
     </ngb-tab>
     <ngb-tab>

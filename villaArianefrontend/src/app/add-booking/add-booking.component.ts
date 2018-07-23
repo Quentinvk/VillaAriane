@@ -18,11 +18,11 @@ export class AddBookingComponent implements OnInit {
 
    }
   
-   addBooking(newBookingUserName:HTMLInputElement,newBookingStartNight:HTMLInputElement,newBookingEndNight:HTMLInputElement,newBookingNrOfPersons:HTMLInputElement,newBookingWantsSheet:HTMLInputElement) : boolean{
-     let booking = new Booking(newBookingUserName.value,newBookingStartNight.valueAsDate,newBookingEndNight.valueAsDate,newBookingNrOfPersons.valueAsNumber,newBookingWantsSheet.checked);
-     this.newBooking.emit(booking);
-     return false;
-   }
+  //  addBooking(newBookingUserName:HTMLInputElement,newBookingStartNight:HTMLInputElement,newBookingEndNight:HTMLInputElement,newBookingNrOfPersons:HTMLInputElement,newBookingWantsSheet:HTMLInputElement) : boolean{
+  //    let booking = new Booking(newBookingUserName.value,newBookingStartNight.valueAsDate,newBookingEndNight.valueAsDate,newBookingNrOfPersons.valueAsNumber,newBookingWantsSheet.checked);
+  //    this.newBooking.emit(booking);
+  //    return false;
+  //  }
     
    
 
@@ -39,6 +39,7 @@ export class AddBookingComponent implements OnInit {
   }
 
   onSubmit(){
+    console.log("submit");
     this.newBooking.emit(new Booking(
       this.booking.value.userName, 
       this.booking.value.startNight, 

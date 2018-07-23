@@ -16,17 +16,15 @@ export class AppComponent implements OnInit {
   private _bookings : Booking[];
 
   ngOnInit() {
-     this._bookings = this._bookingDataService._bookings;
+     
   }
-  constructor( private _bookingDataService : BookingDataService){
+  constructor( ){
     
   }
   get bookings() {
     return this._bookings;
   }
-  newBookingAdded(booking){
-     this._bookingDataService.addNewBooking(booking).subscribe(item => this._bookings.push(item));
-  }
+  
    
 
 }

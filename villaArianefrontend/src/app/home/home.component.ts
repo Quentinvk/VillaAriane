@@ -19,11 +19,12 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._bookings = this._bookingDataService._bookings;
+    this._bookingDataService.bookings.subscribe(items => this._bookings = items);
   }
-  newBooking(booking){
+  newBooking(booking: Booking){
     console.log("newBooking");
-    this._bookingDataService.addNewBooking(booking);
+    this._bookings.push(booking);
+    this._bookingDataService.addNewBooking(booking).subscribe();
  }
   changeButtonLabel(){
       if(this.isCollapsed===false){

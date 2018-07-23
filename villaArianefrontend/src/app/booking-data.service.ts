@@ -23,10 +23,8 @@ export class BookingDataService {
     return this.http.get(this._appUrl)
       .pipe(
         map((list: any[]) : Booking[] =>
-        list.map(item => 
-        new Booking(item.userName, item.startNight, item.endNight, item.nrofPersons, item.wantsSheet)
+        list.map(Booking.fromJSON)
       )
-    )
     );
    }
 

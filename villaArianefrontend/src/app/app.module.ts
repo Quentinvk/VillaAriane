@@ -1,4 +1,3 @@
-import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { CarouselComponent } from './carousel/carousel.component';
 import { HomeComponent } from './home/home.component';
@@ -38,7 +37,6 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     NgbModule.forRoot(),
-    HttpModule,
     FormsModule,
     HttpClientModule, 
     ReactiveFormsModule, 

@@ -11,9 +11,8 @@ import { CalendarComponent } from '../booking/calendar/calendar.component';
 
 
 const appRoutes: Routes = [
-  
-  
-  { path: '', redirectTo: 'home', pathMatch: 'full'},
+  { path: 'home', component: HomeComponent},
+  { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: '**', component: PageNotFoundComponent}
 ];
  

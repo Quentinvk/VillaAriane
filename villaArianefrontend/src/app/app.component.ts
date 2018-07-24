@@ -13,17 +13,13 @@ export class AppComponent implements OnInit {
   
   title = 'Villa Ariane';
 
-  private _bookings : Booking[];
-
   ngOnInit() {
      
   }
   constructor( ){
     
   }
-  get bookings() {
-    return this._bookings;
-  }
+  
   
    
 

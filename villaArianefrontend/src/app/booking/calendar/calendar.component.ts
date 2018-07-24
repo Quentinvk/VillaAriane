@@ -1,8 +1,8 @@
-import { Booking } from '../booking/booking.model';
-import { BookingDataService } from '../booking/booking-data.service';
+import { Booking } from '../booking.model';
+import { BookingDataService } from '../booking-data.service';
 import { Component, OnInit } from '@angular/core';
 import {NgbDateStruct, NgbCalendar,NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
-import { AddBookingComponent } from '../booking/add-booking/add-booking.component';
+import { AddBookingComponent } from '../add-booking/add-booking.component';
 import { EventEmitter } from '@angular/core/src/event_emitter';
 
 
@@ -25,7 +25,7 @@ const after = (one: NgbDateStruct, two: NgbDateStruct) =>
 })
 export class CalendarComponent implements OnInit {
   
-  private bookings : Booking[];
+  private _bookings : Booking[];
   hoveredDate: NgbDateStruct;
   
     fromDate: NgbDateStruct;
@@ -48,6 +48,11 @@ export class CalendarComponent implements OnInit {
       };
       
     }
+    newBooking(booking: Booking){
+      console.log("newBooking");
+      this._bookings.push(booking);
+      this._bookingDataService.addNewBooking(booking).subscribe();
+   }
     
   //   isDisabled = (date: NgbDateStruct, current: {month: number}) => {
   //     const d = new Date(date.year, date.month - 1, date.day);
@@ -75,6 +80,7 @@ export class CalendarComponent implements OnInit {
     isTo = date => equals(date, this.toDate);
 
   ngOnInit() {
+    this._bookingDataService.bookings.subscribe(items => this._bookings = items);
     this.config.markDisabled = (date: NgbDateStruct) => {
       const d = new Date(date.year, date.month - 1, date.day);
       return d.getDay() === 0 || d.getDay() === 6;

@@ -14,7 +14,7 @@
           <div class="card">
             <div class="card-body">
               <span class="calendarcomp">
-                <app-calendar></app-calendar>
+                 <app-calendar></app-calendar> 
               </span>
       
             </div>
@@ -44,25 +44,24 @@
     </ng-template>
   </ngb-tab>
   <ngb-tab>
-    <ng-template ngbTabTitle><b>Bookings</b></ng-template>
+    <ng-template ngbTabTitle routerLinkActive='active' 
+        routerLink="/bookings"><b>Bookings</b></ng-template>
     <ng-template ngbTabContent>
-      <app-bookings></app-bookings>
+       <app-bookings></app-bookings> 
     </ng-template>
   </ngb-tab>
   <ngb-tab>
-      <ng-template ngbTabTitle><b>add booking</b></ng-template>
+      <ng-template ><b>add booking</b></ng-template>
       <ng-template ngbTabContent>
-        <app-add-booking>
-          (newBooking)="newBooking($event)"
-        </app-add-booking>
+        <app-add-booking></app-add-booking>
       </ng-template>
     </ngb-tab>
     <ngb-tab>
       <ng-template ngbTabTitle><b>Reviews</b></ng-template>
       <ng-template ngbTabContent>
-        
       </ng-template>
     </ngb-tab>
+    <router-outlet></router-outlet>
 </ngb-tabset>
 
 

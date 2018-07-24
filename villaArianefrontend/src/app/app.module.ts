@@ -1,46 +1,33 @@
 import { FormsModule } from '@angular/forms';
-import { CarouselComponent } from './carousel/carousel.component';
-import { HomeComponent } from './home/home.component';
+import { CarouselComponent } from './booking/carousel/carousel.component';
+import { HomeComponent } from './booking/home/home.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
-import { CalendarComponent } from './calendar/calendar.component';
-import { BookingComponent } from './booking/booking/booking.component';
-import { GalleryComponent } from './gallery/gallery.component';
-import { StudioComponent } from './studio/studio.component';
-import { WheaterComponent } from './wheater/wheater.component';
-import { AddBookingComponent } from './booking/add-booking/add-booking.component';
-import { BookingsComponent } from './booking/bookings/bookings.component';
-import {HttpClientModule} from '@angular/common/http';
-import {ReactiveFormsModule} from '@angular/forms';
-import {RouterModule, Routes} from '@angular/router';
+import { GalleryComponent } from './booking/gallery/gallery.component';
+import { StudioComponent } from './booking/studio/studio.component';
+import { WheaterComponent } from './booking/wheater/wheater.component';
+import { BookingModule } from './booking/booking.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AppRoutingModule } from './app-routing/app-routing.module';
 
-const appRoutes: Routes = [
-  {path: 'bookings', component: BookingsComponent}, 
-  { path: 'add-booking', component: AddBookingComponent}
-];
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    CalendarComponent,
-    CarouselComponent,
-    BookingComponent,
-    GalleryComponent,
-    StudioComponent,
-    WheaterComponent,
-    AddBookingComponent,
-    BookingsComponent
+    PageNotFoundComponent
+    
   ],
   imports: [
     BrowserModule,
+    BookingModule,
+    AppRoutingModule,
     NgbModule.forRoot(),
     FormsModule,
-    HttpClientModule, 
-    ReactiveFormsModule, 
-    RouterModule.forRoot(appRoutes)
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Booking } from '../booking.model';
+import { HttpErrorResponse } from '../../../../node_modules/@angular/common/http';
 
 @Component({
   selector: 'app-add-booking',
@@ -11,12 +12,13 @@ import { Booking } from '../booking.model';
   styleUrls: ['./add-booking.component.css']
 })
 export class AddBookingComponent implements OnInit {
-   @Output() public newBooking = new EventEmitter<Booking>();
-
+    @Output() public newBooking = new EventEmitter<Booking>();
+    private errorMsg : string;
    
-   constructor( private fb : FormBuilder){
-
-   }
+   constructor( 
+      private fb : FormBuilder,
+      private data :BookingDataService
+   ){ }
   
   //  addBooking(newBookingUserName:HTMLInputElement,newBookingStartNight:HTMLInputElement,newBookingEndNight:HTMLInputElement,newBookingNrOfPersons:HTMLInputElement,newBookingWantsSheet:HTMLInputElement) : boolean{
   //    let booking = new Booking(newBookingUserName.value,newBookingStartNight.valueAsDate,newBookingEndNight.valueAsDate,newBookingNrOfPersons.valueAsNumber,newBookingWantsSheet.checked);
@@ -40,12 +42,20 @@ export class AddBookingComponent implements OnInit {
 
   onSubmit(){
     console.log("submit");
-    this.newBooking.emit(new Booking(
+    const booking = new Booking(
       this.booking.value.userName, 
-      this.booking.value.startNight, 
+      this.booking.value.startNight,   
       this.booking.value.endNight, 
       this.booking.value.nrOfPersonsm, 
-      this.booking.value.wantsSheet));
+      this.booking.value.wantsSheet);
+    this.newBooking.emit(booking);
+      
+    this.data.addNewBooking(booking).subscribe( () => {},
+    (error: HttpErrorResponse) => {
+      this.errorMsg = `Error ${error.status} while adding
+        booking for ${booking.userName}: ${error.error}`;
+    }
+  )
   }
 
   // createIngredients(): FormGroup {

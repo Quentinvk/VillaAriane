@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BookingDataService} from '../booking-data.service';
 import { Observable } from 'rxjs';
 import { HttpErrorResponse } from '../../../../node_modules/@angular/common/http';
+import { Booking } from '../booking.model';
 @Component({
   selector: 'app-bookings',
   templateUrl: './bookings.component.html',
@@ -9,7 +10,7 @@ import { HttpErrorResponse } from '../../../../node_modules/@angular/common/http
 })
 export class BookingsComponent implements OnInit {
 
-  private _bookings;
+  private _bookings : Booking[];
 
   public errorMsg: string;
 
@@ -18,14 +19,7 @@ export class BookingsComponent implements OnInit {
   ngOnInit() {
     // this._bookings = this.data.bookings;
     console.log("bookings getting filled")
-    this.data.bookings.subscribe(
-      bookings => (this._bookings = bookings),
-      (error: HttpErrorResponse) => {
-        this.errorMsg = `Error ${
-          error.status
-        } while trying to retrieve bookings: ${error.error}`;
-      }
-    );
+    this.data.bookings.subscribe(items => this._bookings=items);
   }
 
   get bookings(){

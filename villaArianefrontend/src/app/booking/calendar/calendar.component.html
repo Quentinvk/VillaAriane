@@ -21,3 +21,6 @@
 
 <button class="btn btn-success" (click)="bookNow('fromDate','toDate')" (click)="display('AddBookingComponent')" >Book now</button>
 <!-- <app-add-booking></app-add-booking> -->
+<app-add-booking>
+  (newBooking)="newBooking($event)"
+</app-add-booking>

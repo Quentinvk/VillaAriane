@@ -1,6 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { BookingDataService } from './booking-data.service';
+import { BookingDataService } from './booking/booking-data.service';
 
 describe('BookingDataService', () => {
   beforeEach(() => {

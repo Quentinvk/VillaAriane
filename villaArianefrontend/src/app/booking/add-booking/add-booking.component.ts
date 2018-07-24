@@ -3,7 +3,7 @@ import { FormArray, FormBuilder, FormGroup, Validators, FormControl } from '@ang
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Booking } from '../booking/booking.model';
+import { Booking } from '../booking.model';
 
 @Component({
   selector: 'app-add-booking',

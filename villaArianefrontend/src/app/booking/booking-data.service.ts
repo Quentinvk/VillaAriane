@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Booking } from './booking/booking.model';
+import { Booking } from './booking.model';
 import { Observable } from 'rxjs/Observable';
-import { map } from '../../node_modules/rxjs/operators';
+import { map } from '../../../node_modules/rxjs/operators';
 
 
 

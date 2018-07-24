@@ -1,4 +1,4 @@
-import { Booking } from './booking.model';
+import { Booking } from '../booking.model';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({

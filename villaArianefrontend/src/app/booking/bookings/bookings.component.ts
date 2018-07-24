@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BookingDataService} from '../booking-data.service';
 import { Observable } from 'rxjs';
-import { HttpErrorResponse } from '../../../node_modules/@angular/common/http';
+import { HttpErrorResponse } from '../../../../node_modules/@angular/common/http';
 @Component({
   selector: 'app-bookings',
   templateUrl: './bookings.component.html',

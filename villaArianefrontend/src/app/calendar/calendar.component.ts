@@ -1,8 +1,8 @@
 import { Booking } from '../booking/booking.model';
-import { BookingDataService } from '../booking-data.service';
+import { BookingDataService } from '../booking/booking-data.service';
 import { Component, OnInit } from '@angular/core';
 import {NgbDateStruct, NgbCalendar,NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
-import { AddBookingComponent } from '../add-booking/add-booking.component';
+import { AddBookingComponent } from '../booking/add-booking/add-booking.component';
 import { EventEmitter } from '@angular/core/src/event_emitter';
 
 

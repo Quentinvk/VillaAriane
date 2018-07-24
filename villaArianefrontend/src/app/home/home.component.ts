@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { BookingDataService } from '../booking-data.service';
+import { BookingDataService } from '../booking/booking-data.service';
 import {Booking} from '../booking/booking.model';
 
 @Component({

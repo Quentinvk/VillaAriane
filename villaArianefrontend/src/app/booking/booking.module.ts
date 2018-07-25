@@ -14,11 +14,15 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { StudioComponent } from './studio/studio.component';
 import { WheaterComponent } from './wheater/wheater.component';
+import { BookingDetailComponent } from './booking-detail/booking-detail.component';
+import { BookingResolver} from './bookingResolver';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'bookings', component: BookingsComponent },
-  { path: 'add-booking', component: AddBookingComponent }
+  { path: 'add-booking', component: AddBookingComponent },
+  { path: ':id', component: BookingDetailComponent,
+  resolve: { booking: BookingResolver} }
 ];
 
 @NgModule({
@@ -40,7 +44,10 @@ const routes: Routes = [
     GalleryComponent,
     StudioComponent,
     WheaterComponent,
+    BookingDetailComponent,
   ],
-  providers: [ BookingDataService ]
+  providers: [ BookingDataService,
+               BookingResolver
+   ]
 })
 export class BookingModule { }

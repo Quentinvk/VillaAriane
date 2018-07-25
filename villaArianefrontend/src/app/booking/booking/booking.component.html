@@ -1,7 +1,9 @@
-<p>
-  booking for {{booking.userName}}
 
-  
-</p>
 
-<p *ngIf = 'booking.startNight!=null '>startNight is not empty</p>
+<div class="list-group">
+  <button type="button" class="list-group-item list-group-item-action" >
+    booking for {{booking.userName}} 
+  </button>
+
+  <router-outlet></router-outlet>
+<p *ngIf = 'booking.startNight==null '>startNight is empty</p>

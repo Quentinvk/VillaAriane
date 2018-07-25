@@ -41,4 +41,10 @@ export class BookingDataService {
      return booking.getPrice();
    }
 
+   getBooking(id: string): Observable<Booking> {
+    return this.http
+      .get(`${this._appUrl}/booking/${id}`)
+      .pipe(map(Booking.fromJSON));
+  }
+
 }

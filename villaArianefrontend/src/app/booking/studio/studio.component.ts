@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudioComponent implements OnInit {
 
+  public isCollapsed = true;
+  show : string = "Show Calendar";
   constructor() { }
 
   ngOnInit() {
   }
 
+
+  changeButtonLabel(){
+    if(this.isCollapsed===false){
+      this.show= "Hide Calendar";
+    }
+    else
+      this.show="Show Calendar";
+}
 }

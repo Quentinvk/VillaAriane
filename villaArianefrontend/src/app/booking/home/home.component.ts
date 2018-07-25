@@ -11,7 +11,7 @@ import {Booking} from '../booking.model';
 export class HomeComponent implements OnInit {
   
   public isCollapsed = true;
-  show : string = "Show Calendar";
+  show : string = "Show availabilities";
   currentOrientation = 'vertical';
 
   constructor() { 

@@ -1,7 +1,11 @@
 .wheater{
-  position: relative;
-  width: 15%;
   
+  width: 15%;
+}
+
+.card-body{
+  background-color:  wheat;
+  position: fixed;
 }
 
 

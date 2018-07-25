@@ -1,9 +1,13 @@
 <section class="sections">
-<ngb-tabset justify="justified" type="pills" [orientation]="currentOrientation" class="nav">
-<ngb-tab title="Home" >
+<ngb-tabset justify="center" type="pills" [orientation]="currentOrientation" class="nav">
+<ngb-tab  >
+    <ng-template ngbTabTitle><b>Home</b> </ng-template>
   <ng-template ngbTabContent>
     <section>
-      <app-carousel></app-carousel>
+      <div class="carousel carousel-item-right">
+          <app-carousel></app-carousel>
+      </div>
+      
       <p>
           <button type="button" class="btn btn-outline-primary" (click)="isCollapsed = !isCollapsed "
                   [attr.aria-expanded]="isCollapsed" aria-controls="collapseExample" (click)="changeButtonLabel()">

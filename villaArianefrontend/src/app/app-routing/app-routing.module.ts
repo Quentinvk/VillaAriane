@@ -6,21 +6,27 @@ import { BookingsComponent } from '../booking/bookings/bookings.component';
 import { AddBookingComponent } from '../booking/add-booking/add-booking.component';
 import { HomeComponent } from '../booking/home/home.component';
 import { CalendarComponent } from '../booking/calendar/calendar.component';
+import { SelectivePreloadStrategy } from './SelectivePreloadStrategy';
 
 
 
 
 const appRoutes: Routes = [
-  { path: 'home', component: HomeComponent},
-  { path: '', redirectTo: '/home', pathMatch: 'full'},
+  {
+    path: 'booking',
+    loadChildren: 'app/booking/booking.module#BookingModule',
+    data: { preload:true}
+  },
+  { path: '', redirectTo: 'booking/home', pathMatch: 'full'},
   { path: '**', component: PageNotFoundComponent}
 ];
- 
+
 @NgModule({
   imports: [
-    RouterModule.forRoot(appRoutes, {enableTracing: true})
+    RouterModule.forRoot(appRoutes, 
+      {preloadingStrategy: SelectivePreloadStrategy})
   ],
-  providers: [],
+  providers: [SelectivePreloadStrategy],
   declarations: [],
   exports: [RouterModule]
 })

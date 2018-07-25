@@ -8,8 +8,11 @@ var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/arianedb', {  useMongoClient: true });
 
+let passport = require('passport');
 require('./models/Book');
+require('./models/User')
 
+require('./config/passport');
 var app = express();
 
 
@@ -21,6 +24,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(passport.initialize());
 var index = require('./routes/index');
 app.use('/', index);
 var users = require('./routes/users');

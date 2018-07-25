@@ -1,50 +1,85 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Booking } from './booking.model';
 import { Observable } from 'rxjs/Observable';
-import { map } from '../../../node_modules/rxjs/operators';
+import { map, catchError } from '../../../node_modules/rxjs/operators';
+import { throwError } from '../../../node_modules/rxjs';
 
 
 
-
+const httpOptions = {
+  headers: new HttpHeaders({'Content-Type': 'application/json'})
+};
+const _appUrl = "/API";
 
 @Injectable()
 export class BookingDataService {
 
-  private readonly _appUrl = '/API/bookings/';  
-
-  public _bookings;
+  
   
   constructor(private http: HttpClient) {
       
    }
-   get bookings(): Observable<Booking[]>  {
+   
+   private extractData(res: Response) {
+    let body = res;
+    return body || { };
+  }
 
-    return this.http.get(this._appUrl)
+   get bookings(): Observable<any>  {
+    return this.http.get(`${_appUrl}/bookings/`, httpOptions)
       .pipe(
-        map((list: any[]) : Booking[] =>
-        list.map(Booking.fromJSON)
-      )
+        map(this.extractData ),
+        catchError(this.handleError)
     );
    }
 
 
-   addNewBooking(booking): Observable <Booking> {  
-     return this.http.post(this._appUrl, booking)
-       .pipe(map(
-         (item : any) : Booking =>
-         new Booking(item.userName, item.startNight, item.endNight, item.nrofPersons, item.wantsSheet)
-       ))
+   addNewBooking(booking): Observable <any> {  
+     return this.http.post(`${_appUrl}/bookings/`, booking, httpOptions)
+       .pipe(catchError(this.handleError)
+       );
    }
+    
+   updateBook(data): Observable<any> {
+    return this.http.put(_appUrl, data, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+  
+  getBooking(id: string): Observable<any> {
+    return this.http
+      .get(`${_appUrl}/booking/${id}`, httpOptions)
+      .pipe(map(this.extractData), 
+      catchError(this.handleError)
+    );
+  }
 
    getPrice(booking):number{
      return booking.getPrice();
    }
 
-   getBooking(id: string): Observable<Booking> {
-    return this.http
-      .get(`${this._appUrl}/booking/${id}`)
-      .pipe(map(Booking.fromJSON));
-  }
+   deleteBook(id: string): Observable<{}> {
+    const url = `${_appUrl}/${id}`;
+    return this.http.delete(url, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+    }
 
+  private handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.error.message);
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong,
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
+    }
+    // return an observable with a user-facing error message
+    return throwError('Something bad happened; please try again later.');
+  };
 }

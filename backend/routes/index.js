@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 let mongoose = require('mongoose');
-let Book = mongoose.model('Book');
+let Book = mongoose.model('Booking');
 
 router.get('/', function(req, res, next) {
   res.send('server works');

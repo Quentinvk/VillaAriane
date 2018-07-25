@@ -8,4 +8,4 @@ var BookingSchema = new mongoose.Schema({
     wantsSheet : Boolean
 
 });
-mongoose.model('Book', BookingSchema);
+mongoose.model('Booking', BookingSchema);

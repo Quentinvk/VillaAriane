@@ -10,16 +10,22 @@ import { Booking } from '../booking.model';
 })
 export class BookingsComponent implements OnInit {
 
-  private _bookings : Booking[];
+  private _bookings : any;
 
   public errorMsg: string;
 
   constructor(private data : BookingDataService) { }
 
   ngOnInit() {
+    this.data.bookings.subscribe(res => {
+      console.log(res);
+      this._bookings = res;
+    }, err => {
+      console.log(err);
+    });
     // this._bookings = this.data.bookings;
-    console.log("bookings getting filled")
-    this.data.bookings.subscribe(items => this._bookings=items);
+     console.log("bookings getting filled")
+    // this.data.bookings.subscribe(items => this._bookings=items);
   }
 
   get bookings(){

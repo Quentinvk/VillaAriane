@@ -5,6 +5,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
+let jwt = require('jsonwebtoken');
+
 
 mongoose.connect('mongodb://localhost/arianedb', {  useMongoClient: true });
 
@@ -28,7 +31,7 @@ app.use(passport.initialize());
 var index = require('./routes/index');
 app.use('/', index);
 var users = require('./routes/users');
-app.use('/users', users);
+app.use('/API/users', users);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

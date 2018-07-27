@@ -11,7 +11,7 @@ export class AuthenticationService {
   private readonly _tokenKey = 'currentUser';
   private readonly _url = '/API/users';
   private _user$: BehaviorSubject<string>;
-  
+  public redirectUrl: string;
   constructor(private http: HttpClient) { 
     //check local storage for token
     let parsedToken = parseJwt(localStorage.getItem(this._tokenKey));
@@ -75,6 +75,15 @@ export class AuthenticationService {
         }
       })
     );
+  }
+
+  get user$(): BehaviorSubject<string> {
+    return this._user$;
+  }
+
+  get token(): string {
+    const localToken = localStorage.getItem(this._tokenKey);
+    return !!localToken ? localToken : '';
   }
 }
 //login en register calls

@@ -4,10 +4,10 @@
     <ng-template ngbTabTitle><b>Home</b> </ng-template>
   <ng-template ngbTabContent>
     <section>
-      <div class="carousel carousel-item-right">
+      <div class="carousel carousel-item-left ">
           <app-carousel></app-carousel>
       </div>
-      
+    </section>  
       <p>
           <button type="button" class="btn btn-outline-primary" (click)="isCollapsed = !isCollapsed "
                   [attr.aria-expanded]="isCollapsed" aria-controls="collapseExample" (click)="changeButtonLabel()">
@@ -24,7 +24,7 @@
             </div>
           </div>
         </div>
-      </section>
+      
         <Section class="wheater">
           <app-wheater></app-wheater>
           Some wheater api here.

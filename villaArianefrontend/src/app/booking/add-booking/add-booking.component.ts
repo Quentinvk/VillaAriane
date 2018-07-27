@@ -2,7 +2,7 @@ import { BookingDataService } from '../booking-data.service';
 import { FormArray, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
 import { Booking } from '../booking.model';
 import { HttpErrorResponse } from '../../../../node_modules/@angular/common/http';
 
@@ -13,6 +13,10 @@ import { HttpErrorResponse } from '../../../../node_modules/@angular/common/http
 })
 export class AddBookingComponent implements OnInit {
     @Output() public newBooking = new EventEmitter<Booking>();
+
+    @Input() public fromDate: Date;
+    @Input() public toDate: Date;
+    
     private errorMsg : string;
    
    constructor( 
@@ -31,10 +35,11 @@ export class AddBookingComponent implements OnInit {
   private booking: FormGroup;
 
   ngOnInit() {
+      console.log(this.fromDate);
       this.booking = this.fb.group({
         userName: this.fb.control(' ', [Validators.required, Validators.minLength(3)]), 
-        startNight: this.fb.control( new Date() ,Validators.required),
-        endNight: this.fb.control(new Date(), Validators.required),
+        startNight: this.fb.control( this.fromDate ,Validators.required),
+        endNight: this.fb.control( this.toDate, Validators.required),
         nrOfPersons: this.fb.control('1'),
         wantsSheet: this.fb.control('false')
       })

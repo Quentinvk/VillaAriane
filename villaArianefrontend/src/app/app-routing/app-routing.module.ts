@@ -7,6 +7,7 @@ import { AddBookingComponent } from '../booking/add-booking/add-booking.componen
 import { HomeComponent } from '../booking/home/home.component';
 import { CalendarComponent } from '../booking/calendar/calendar.component';
 import { SelectivePreloadStrategy } from './SelectivePreloadStrategy';
+import { AuthGuardService } from '../user/auth-guard.service';
 
 
 
@@ -14,6 +15,7 @@ import { SelectivePreloadStrategy } from './SelectivePreloadStrategy';
 const appRoutes: Routes = [
   {
     path: 'booking',
+    // canActivate: [ AuthGuardService ],
     loadChildren: 'app/booking/booking.module#BookingModule',
     data: { preload:true}
   },

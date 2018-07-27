@@ -4,9 +4,9 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '../../../node_modules/@angular/forms';
 import { RouterModule } from '../../../node_modules/@angular/router';
-import { AuthenticationService } from './authentication.service';
 import { HttpModule } from '@angular/http';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import { AuthenticationService } from './authentication.service';
 const routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent  }

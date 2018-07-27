@@ -3,7 +3,6 @@ import { BookingDataService } from '../booking-data.service';
 import { Component, OnInit } from '@angular/core';
 import {NgbDateStruct, NgbCalendar,NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
 import { AddBookingComponent } from '../add-booking/add-booking.component';
-import { EventEmitter } from '@angular/core/src/event_emitter';
 
 
 const equals = (one: NgbDateStruct, two: NgbDateStruct) =>
@@ -36,16 +35,15 @@ export class CalendarComponent implements OnInit {
 
       this.fromDate = calendar.getToday();
       this.toDate = calendar.getNext(calendar.getToday(), 'd', 3);
-
       config.minDate = {year: calendar.getToday().year, month: calendar.getToday().month-1,day:calendar.getToday().day}
       config.maxDate = {year: 2099, month: 12, day: 31};
       
       config.outsideDays = 'hidden';
 
-      config.markDisabled = (date: NgbDateStruct) => {
-        const d = new Date(date.year, date.month - 1, date.day);
-        return d.getDay() === 0 || d.getDay() === 6;
-      };
+      // config.markDisabled = (date: NgbDateStruct) => {
+      //   const d = new Date(date.year, date.month - 1, date.day);
+      //   return d.getDay() === 0 || d.getDay() === 6;
+      // };
       
     }
     newBooking(booking: Booking){

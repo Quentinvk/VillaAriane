@@ -3,9 +3,11 @@
   width: 15%;
 }
 
-.card-body{
-  background-color:  wheat;
-  position: fixed;
+div.card-body{
+  background-color:wheat;
+  flex-direction: row;
+  width: 150%;
+  margin-right: 50%;
 }
 
 

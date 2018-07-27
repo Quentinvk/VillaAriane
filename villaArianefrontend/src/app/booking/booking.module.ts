@@ -16,6 +16,7 @@ import { StudioComponent } from './studio/studio.component';
 import { WheaterComponent } from './wheater/wheater.component';
 import { BookingDetailComponent } from './booking-detail/booking-detail.component';
 import { BookingResolver} from './bookingResolver';
+import { httpInterceptorProviders } from '../http-interceptors';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
@@ -47,7 +48,9 @@ const routes: Routes = [
     BookingDetailComponent,
   ],
   providers: [ BookingDataService,
-               BookingResolver
+               BookingResolver,
+               //interceptors
+               httpInterceptorProviders
    ]
 })
 export class BookingModule { }

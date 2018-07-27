@@ -25,7 +25,7 @@
     </button>
   </div> -->
 
-  <form [formGroup] = 'booking' (ngSubmit) = 'onSubmit()'>
+  <form [formGroup] = 'booking' (ngSubmit) = 'onSubmit()' class="form">
     <h3>Add Booking</h3>
     <div>
       <label for='userName_id'>username:</label>
@@ -35,9 +35,9 @@
     error! this is required
   </div>
       <label for='startNight_id'>startNight:</label>
-      <input type="date" id="startNight_id" formControlName = 'startNight' >
+      <input type="date" id="startNight_id" formControlName = 'startNight' ng-disabled="true" value="{fromDate}">
       <label for='endNight_id'>endNight:</label>
-      <input type="date" id="endNight_id" formControlName = 'endNight'>
+      <input type="date" id="endNight_id" formControlName = 'endNight' ng-disabled="true" value="{toDate}">
       <label for='nrOfPersons_id'>number of Persons:</label>
       <select id="nrOfPersons_id" formControlName = 'nrOfPersons'>
         <option value="1">1</option>

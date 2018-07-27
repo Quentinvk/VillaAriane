@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BookingDataService} from '../booking-data.service';
 import { Observable } from 'rxjs';
-import { HttpErrorResponse } from '../../../../node_modules/@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Booking } from '../booking.model';
 @Component({
   selector: 'app-bookings',
@@ -17,6 +17,7 @@ export class BookingsComponent implements OnInit {
   constructor(private data : BookingDataService) { }
 
   ngOnInit() {
+    
     this.data.bookings.subscribe(res => {
       console.log(res);
       this._bookings = res;

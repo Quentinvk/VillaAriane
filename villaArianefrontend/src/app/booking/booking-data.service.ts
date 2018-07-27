@@ -2,8 +2,8 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { Booking } from './booking.model';
 import { Observable } from 'rxjs/Observable';
-import { map, catchError } from '../../../node_modules/rxjs/operators';
-import { throwError } from '../../../node_modules/rxjs';
+import { map, catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 
 
@@ -32,6 +32,7 @@ export class BookingDataService {
         map(this.extractData ),
         catchError(this.handleError)
     );
+    
    }
 
 

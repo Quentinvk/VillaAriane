@@ -1,15 +1,19 @@
+import { AuthGuardService } from './auth-guard.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { AuthenticationService } from './authentication.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { ReactiveFormsModule } from '../../../node_modules/@angular/forms';
-import { RouterModule } from '../../../node_modules/@angular/router';
 import { HttpModule } from '@angular/http';
-import {MatButtonModule, MatCheckboxModule} from '@angular/material';
-import { AuthenticationService } from './authentication.service';
+import { RegisterComponent } from './register/register.component';
+import { LogoutComponent } from './logout/logout.component';
+
+
 const routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent  }
+  { path: 'logout', component: LogoutComponent },
+  { path: 'register', component: RegisterComponent }
 ];
 
 @NgModule({
@@ -17,14 +21,14 @@ const routes = [
     CommonModule,
     HttpModule,
     ReactiveFormsModule,
-    RouterModule.forChild(routes),
-    MatButtonModule, 
-    MatCheckboxModule
+    RouterModule.forChild(routes)
   ],
-  declarations: [LoginComponent, RegisterComponent],
+  declarations: [LoginComponent, RegisterComponent, LogoutComponent],
   providers: [
     
     AuthenticationService,
+    AuthGuardService
   ],
+  exports: []
 })
-export class UserModule { }
+export class UserModule {}

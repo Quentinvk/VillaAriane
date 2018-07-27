@@ -2,21 +2,22 @@ import { BookingDataService } from '../booking-data.service';
 import { FormArray, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
-import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Booking } from '../booking.model';
-import { HttpErrorResponse } from '../../../../node_modules/@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-booking',
   templateUrl: './add-booking.component.html',
-  styleUrls: ['./add-booking.component.css']
+  styleUrls: ['./add-booking.component.css'],
+  changeDetection : ChangeDetectionStrategy.OnPush
 })
 export class AddBookingComponent implements OnInit {
     @Output() public newBooking = new EventEmitter<Booking>();
 
     @Input() public fromDate: Date;
     @Input() public toDate: Date;
-    
+    @Input() public randomBoolean : Boolean;
     private errorMsg : string;
    
    constructor( 

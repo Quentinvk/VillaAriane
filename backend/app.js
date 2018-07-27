@@ -5,20 +5,26 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-mongoose.Promise = require('bluebird');
+let passport = require('passport');
+mongoose.Promise('bluebird');
+mongoose.connect('mongodb://localhost/arianedb', {  useMongoClient: true });
 let jwt = require('jsonwebtoken');
 
 
-mongoose.connect('mongodb://localhost/arianedb', {  useMongoClient: true });
 
-let passport = require('passport');
+
+
 require('./models/Book');
 require('./models/User')
 
 require('./config/passport');
+
+
+var index = require('./routes/index');
+var users = require('./routes/users');
+
+// let cors = require('cors');
 var app = express();
-
-
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -28,9 +34,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
-var index = require('./routes/index');
+
 app.use('/', index);
-var users = require('./routes/users');
 app.use('/API/users', users);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

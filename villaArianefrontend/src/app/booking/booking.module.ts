@@ -3,20 +3,21 @@ import { CommonModule } from '@angular/common';
 import { BookingComponent } from './booking/booking.component';
 import { AddBookingComponent } from './add-booking/add-booking.component';
 import { BookingsComponent } from './bookings/bookings.component';
-import { HttpClientModule } from '../../../node_modules/@angular/common/http';
-import { ReactiveFormsModule, FormsModule } from '../../../node_modules/@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BookingDataService } from './booking-data.service';
 import { CalendarComponent } from './calendar/calendar.component';
-import { NgbModule } from '../../../node_modules/@ng-bootstrap/ng-bootstrap';
-import { Routes, RouterModule } from '../../../node_modules/@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { StudioComponent } from './studio/studio.component';
 import { WheaterComponent } from './wheater/wheater.component';
 import { BookingDetailComponent } from './booking-detail/booking-detail.component';
-import { BookingResolver} from './bookingResolver';
+import { BookingResolver} from './BookingResolver';
 import { httpInterceptorProviders } from '../http-interceptors';
+
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
@@ -48,9 +49,9 @@ const routes: Routes = [
     BookingDetailComponent,
   ],
   providers: [ BookingDataService,
-               BookingResolver,
+                BookingResolver,
                //interceptors
-               httpInterceptorProviders
+                httpInterceptorProviders
    ]
 })
 export class BookingModule { }

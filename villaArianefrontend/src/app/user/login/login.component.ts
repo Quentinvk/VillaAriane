@@ -1,8 +1,24 @@
-import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
-import { FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl } from '../../../../node_modules/@angular/forms';
-import { Router } from '../../../../node_modules/@angular/router';
-import { HttpErrorResponse } from '../../../../node_modules/@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  ValidatorFn,
+  Validators
+} from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
+
+function passwordValidator(): ValidatorFn {
+  return (control: AbstractControl): { [key: string]: any } => {
+    console.log(control.value);
+    return control.value.length < 12
+      ? { passwordTooShort: { value: control.value.length } }
+      : null;
+  };
+}
+
 
 @Component({
   selector: 'app-login',
@@ -10,11 +26,11 @@ import { HttpErrorResponse } from '../../../../node_modules/@angular/common/http
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
   public user: FormGroup;
   public errorMsg: string;
 
-  constructor(private authService: AuthenticationService,
+  constructor(
+    private authService: AuthenticationService,
     private router: Router,
     private fb: FormBuilder
   ) {}
@@ -25,7 +41,6 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required]
     });
   }
-
 
   onSubmit() {
     this.authService
@@ -56,13 +71,4 @@ export class LoginComponent implements OnInit {
         }
       );
   }
-  
-}
-function passwordValidator(): ValidatorFn {
-  return (control: AbstractControl): { [key: string]: any } => {
-    console.log(control.value);
-    return control.value.length < 12
-      ? { passwordTooShort: { value: control.value.length } }
-      : null;
-  };
 }

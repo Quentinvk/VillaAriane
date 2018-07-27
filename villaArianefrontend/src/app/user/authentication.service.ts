@@ -1,32 +1,50 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class AuthenticationService {
+function parseJwt(token) {
+  if (!token) {
+    return null;
+  }
+  const base64Url = token.split('.')[1];
+  const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+  return JSON.parse(window.atob(base64));
+}
 
+@Injectable()
+export class AuthenticationService {
   private readonly _tokenKey = 'currentUser';
   private readonly _url = '/API/users';
   private _user$: BehaviorSubject<string>;
-  public redirectUrl: string;
-  constructor(private http: HttpClient) { 
-    //check local storage for token
-    let parsedToken = parseJwt(localStorage.getItem(this._tokenKey));
 
-    //not more secure, first check if she is logged shoudn't be a ba call
-    const expires = new Date(parseInt(parsedToken.exp, 10) * 1000) < new Date();
+  public redirectUrl: string;
+
+  constructor(private http: HttpClient) {
+    let parsedToken = parseJwt(localStorage.getItem(this._tokenKey));
+    if (parsedToken) {
+      const expires =
+        new Date(parseInt(parsedToken.exp, 10) * 1000) < new Date();
       if (expires) {
         localStorage.removeItem(this._tokenKey);
         parsedToken = null;
       }
-
-      // subscrption to user global
-      this._user$ = new BehaviorSubject<string>(parsedToken && parsedToken.username);
+    }
+    this._user$ = new BehaviorSubject<string>(
+      parsedToken && parsedToken.username
+    );
   }
-  
+
+  get user$(): BehaviorSubject<string> {
+    return this._user$;
+  }
+
+  get token(): string {
+    const localToken = localStorage.getItem(this._tokenKey);
+    return !!localToken ? localToken : '';
+  }
+
   login(username: string, password: string): Observable<boolean> {
     return this.http.post(`${this._url}/login`, { username, password }).pipe(
       map((res: any) => {
@@ -40,8 +58,15 @@ export class AuthenticationService {
         }
       })
     );
-  } 
-  
+  }
+
+  logout() {
+    if (this.user$.getValue()) {
+      localStorage.removeItem(this._tokenKey);
+      setTimeout(() => this._user$.next(null));
+    }
+  }
+
   register(username: string, password: string): Observable<boolean> {
     return this.http.post(`${this._url}/register`, { username, password }).pipe(
       map((res: any) => {
@@ -57,14 +82,6 @@ export class AuthenticationService {
     );
   }
 
-  //remove token
-  logout() {
-    if (this._user$.getValue()) {
-      localStorage.removeItem('currentUser');
-      setTimeout(() => this._user$.next(null));
-    }
-  }
-
   checkUserNameAvailability(username: string): Observable<boolean> {
     return this.http.post(`${this._url}/checkusername`, { username }).pipe(
       map((item: any) => {
@@ -76,24 +93,4 @@ export class AuthenticationService {
       })
     );
   }
-
-  get user$(): BehaviorSubject<string> {
-    return this._user$;
-  }
-
-  get token(): string {
-    const localToken = localStorage.getItem(this._tokenKey);
-    return !!localToken ? localToken : '';
-  }
 }
-//login en register calls
-function parseJwt(token) {
-  if (!token) {
-    return null;
-  }
-  const base64Token = token.split('.')[1];
-  const base64 = base64Token.replace(/-/g, '+').replace(/_/g, '/');
-  return JSON.parse(window.atob(base64));
-}
-
-

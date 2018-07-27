@@ -14,13 +14,13 @@
 
 
 
-<div>
+<!-- <div>
   <pre>From night: {{ fromDate.day}}/{{fromDate.month}}/{{fromDate.year}} </pre>
   <pre>To night: {{ toDate.day}}/{{toDate.month}}/{{toDate.year}} included</pre>
-</div>
+</div> -->
 
-<button class="btn btn-success" (click)="bookNow('fromDate','toDate')" (click)="display('AddBookingComponent')" >Book now</button>
+<button class="btn btn-success" (click)="selectDate()" >Select Date</button>
 
-<app-add-booking [fromDate] = 'fromDate' [toDate]='toDate'>
+<app-add-booking [fromDate] = 'fromDate' [toDate]='toDate' [randomBoolean]='randomBoolean' >
   (newBooking)="newBooking($event)"
 </app-add-booking>

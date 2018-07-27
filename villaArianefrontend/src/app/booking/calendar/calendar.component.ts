@@ -30,6 +30,7 @@ export class CalendarComponent implements OnInit {
     fromDate: NgbDateStruct;
     toDate: NgbDateStruct;
     model;
+    randomBoolean : Boolean;
     
     constructor(calendar: NgbCalendar, private config : NgbDatepickerConfig, private _bookingDataService: BookingDataService) {
 
@@ -51,7 +52,9 @@ export class CalendarComponent implements OnInit {
       this._bookings.push(booking);
       this._bookingDataService.addNewBooking(booking).subscribe();
    }
-    
+    selectDate() {
+      this.randomBoolean = true
+    }
   //   isDisabled = (date: NgbDateStruct, current: {month: number}) => {
   //     const d = new Date(date.year, date.month - 1, date.day);
   //     return this.isBookedDate(); // this is undefined
@@ -79,6 +82,7 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit() {
     this._bookingDataService.bookings.subscribe(items => this._bookings = items);
+    
     this.config.markDisabled = (date: NgbDateStruct) => {
       const d = new Date(date.year, date.month - 1, date.day);
       return d.getDay() === 0 || d.getDay() === 6;

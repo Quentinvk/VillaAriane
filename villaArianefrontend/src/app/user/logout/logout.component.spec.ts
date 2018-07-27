@@ -1,27 +1,25 @@
 import { HttpModule } from '@angular/http';
+import { AuthenticationService } from '../authentication.service';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoginComponent } from './login.component';
-import { ReactiveFormsModule } from '@angular/forms';
-
+import { LogoutComponent } from './logout.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { AuthenticationService } from '../authentication.service';
 
-describe('LoginComponent', () => {
-  let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
+describe('LogoutComponent', () => {
+  let component: LogoutComponent;
+  let fixture: ComponentFixture<LogoutComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginComponent ],
-      imports: [ReactiveFormsModule, HttpModule, RouterTestingModule],
+      declarations: [ LogoutComponent ],
+      imports: [HttpModule, RouterTestingModule],
       providers: [AuthenticationService]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginComponent);
+    fixture = TestBed.createComponent(LogoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

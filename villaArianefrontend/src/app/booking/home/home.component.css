@@ -9,6 +9,11 @@ div.card-body{
   width: 150%;
   margin-right: 50%;
 }
-
+.logintab{
+  border-color: blue;
+}
+.item{
+  color: white;
+}
 
 

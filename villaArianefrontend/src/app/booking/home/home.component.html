@@ -1,5 +1,12 @@
 <section class="sections">
 <ngb-tabset justify="center" type="pills" [orientation]="currentOrientation" class="nav">
+  <ngb-tab class="logintab">
+    <ng-template ngbTabTitle><a *ngIf='(currentUser | async) else loginlink' class="item" routerLinkActive='active' routerLink="/logout">{{currentUser|async}}</a>
+      <ng-template #loginlink>
+        <a class="item" routerLinkActive='active' routerLink="/login">log in</a>
+      </ng-template>
+    </ng-template>
+  </ngb-tab>
 <ngb-tab  >
     <ng-template ngbTabTitle><b>Home</b> </ng-template>
   <ng-template ngbTabContent>
@@ -69,3 +76,4 @@
 </section>
 
 
+<router-outlet></router-outlet>

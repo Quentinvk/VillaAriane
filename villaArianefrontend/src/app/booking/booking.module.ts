@@ -48,10 +48,12 @@ const routes: Routes = [
     WheaterComponent,
     BookingDetailComponent,
   ],
-  providers: [ BookingDataService,
-                BookingResolver,
-               //interceptors
-                httpInterceptorProviders
+  providers: [ 
+    httpInterceptorProviders,
+    BookingDataService,
+    BookingResolver,
+               
+                
    ]
 })
 export class BookingModule { }

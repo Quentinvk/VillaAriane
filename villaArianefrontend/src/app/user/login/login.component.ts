@@ -43,12 +43,10 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    
     this.authService
       .login(this.user.value.username, this.user.value.password)
       .subscribe(
         val => {
-          console.log(val);
           if (val) {
             if (this.authService.redirectUrl) {
               this.router.navigateByUrl(this.authService.redirectUrl);
@@ -62,12 +60,10 @@ export class LoginComponent implements OnInit {
         },
         (err: HttpErrorResponse) => {
           if (err.error instanceof Error) {
-            console.log("this error");
             this.errorMsg = `Error while trying to login user ${
               this.user.value.username
             }: ${err.error.message}`;
           } else {
-            console.log("or this one");
             this.errorMsg = `Error ${err.status} while trying to login user ${
               this.user.value.username
             }: ${err.error}`;

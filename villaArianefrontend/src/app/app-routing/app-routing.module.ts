@@ -10,7 +10,7 @@ import { AuthGuardService } from '../user/auth-guard.service';
 const appRoutes: Routes = [
   {
     path: 'booking',
-    // canActivate: [ AuthGuardService ],
+    //  canActivate: [ AuthGuardService ],
     loadChildren: 'app/booking/booking.module#BookingModule',
     data: { preload:true}
   },

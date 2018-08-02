@@ -1,6 +1,6 @@
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 
@@ -12,8 +12,6 @@ function parseJwt(token) {
   const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
   return JSON.parse(window.atob(base64));
 }
-
-
 
 @Injectable()
 export class AuthenticationService {
@@ -48,14 +46,12 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string): Observable<boolean> {
-    
     return this.http.post(`${this._url}/login`, { username, password }).pipe(
       map((res: any) => {
         const token = res.token;
         if (token) {
           localStorage.setItem(this._tokenKey, token);
           this._user$.next(username);
-          
           return true;
         } else {
           return false;
@@ -90,6 +86,7 @@ export class AuthenticationService {
     return this.http.post(`${this._url}/checkusername`, { username }).pipe(
       map((item: any) => {
         if (item.username === 'alreadyexists') {
+          console.log("userName already exists");
           return false;
         } else {
           return true;

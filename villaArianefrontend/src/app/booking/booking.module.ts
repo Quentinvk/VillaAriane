@@ -16,10 +16,10 @@ import { StudioComponent } from './studio/studio.component';
 import { WheaterComponent } from './wheater/wheater.component';
 import { BookingDetailComponent } from './booking-detail/booking-detail.component';
 import { BookingResolver} from './BookingResolver';
-import { httpInterceptorProviders } from '../http-interceptors';
+import { httpInterceptorProviders } from '../http-interceptors/index';
 
 
-const routes: Routes = [
+const routes = [
   { path: 'home', component: HomeComponent},
   { path: 'bookings', component: BookingsComponent },
   { path: 'add-booking', component: AddBookingComponent },
@@ -32,9 +32,10 @@ const routes: Routes = [
     HttpClientModule,
     CommonModule,
     ReactiveFormsModule,
+    RouterModule.forChild(routes),
     FormsModule,
     NgbModule,
-    RouterModule.forChild(routes),
+    
   ],
   declarations: [
     HomeComponent,
@@ -51,9 +52,7 @@ const routes: Routes = [
   providers: [ 
     httpInterceptorProviders,
     BookingDataService,
-    BookingResolver,
-               
-                
-   ]
+    BookingResolver 
+  ]
 })
 export class BookingModule { }

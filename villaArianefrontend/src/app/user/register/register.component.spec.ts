@@ -1,4 +1,4 @@
-import { AuthenticationService } from '../authentication.service';
+import { AuthenticationService } from './../authentication.service';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RegisterComponent } from './register.component';

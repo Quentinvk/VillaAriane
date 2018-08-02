@@ -3,8 +3,9 @@ var router = express.Router();
 let mongoose = require('mongoose');
 let Book = mongoose.model('Booking');
 let jwt = require('express-jwt');
+mongoose.Promise = require('bluebird');
 
-let auth = jwt({secret: process.env.booking_BACKEND_SECRET});
+let auth = jwt({secret: process.env.BOOKING_BACKEND_SECRET});
 
 router.get('/', function(req, res, next) {
   res.send('server works');

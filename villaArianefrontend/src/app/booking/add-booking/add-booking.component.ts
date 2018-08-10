@@ -6,6 +6,7 @@ import { Component, EventEmitter, OnInit, Output, Input, ChangeDetectionStrategy
 import { Booking } from '../booking.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthenticationService } from '../../user/authentication.service';
+import { NgbDateStruct } from '../../../../node_modules/@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-add-booking',
@@ -16,8 +17,8 @@ import { AuthenticationService } from '../../user/authentication.service';
 export class AddBookingComponent implements OnInit {
     @Output() public newBooking = new EventEmitter<Booking>();
 
-    @Input() public fromDate: Date;
-    @Input() public toDate: Date;
+    @Input() public fromDate: NgbDateStruct;
+    @Input() public toDate: NgbDateStruct;
     @Input() public randomBoolean : Boolean;
     private errorMsg : string;
    private userName : string;
@@ -38,22 +39,30 @@ export class AddBookingComponent implements OnInit {
       console.log(this.fromDate);
       this.booking =this.fb.group({
         userName: this.fb.control( this.userName, [Validators.required, Validators.minLength(3)]), 
-        startNight: this.fb.control( this.fromDate ,Validators.required),
-        endNight: this.fb.control( this.toDate, Validators.required),
+        startNight: this.fb.control(Validators.required),
+        endNight: this.fb.control( Validators.required),
         nrOfPersons: this.fb.control('2'),
         wantsSheet: this.fb.control('false')
       })
       
   }
-
+  
   
 
   onSubmit(){
+    let startNight = new Date();
+    startNight.setDate(this.fromDate.day);
+    startNight.setMonth(this.fromDate.month);
+    startNight.setFullYear(this.fromDate.year);
+    let endNight = new Date();
+    endNight.setDate(this.toDate.day);
+    endNight.setMonth(this.toDate.month);
+    endNight.setFullYear(this.toDate.year);
     const booking = new Booking(
       this.booking.value.userName, 
-      this.booking.value.startNight,   
-      this.booking.value.endNight, 
-      this.booking.value.nrOfPersonsm, 
+      startNight,
+      endNight,
+      this.booking.value.nrOfPersons, 
       this.booking.value.wantsSheet);
     this.newBooking.emit(booking);
       

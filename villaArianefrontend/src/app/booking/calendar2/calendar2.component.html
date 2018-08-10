@@ -1,4 +1,6 @@
-<ngb-datepicker #dp ngModel (select)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t" class="calendar">
+<p>Example of the range selection</p>
+
+<ngb-datepicker #dp (select)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t">
 </ngb-datepicker>
 
 <ng-template #t let-date="date" let-focused="focused">
@@ -13,13 +15,6 @@
 </ng-template>
 
 
-
-<div>
-  <pre>From night: {{ fromDate.day}}/{{fromDate.month}}/{{fromDate.year}} </pre>
-  <pre>To night: {{ toDate.day}}/{{toDate.month}}/{{toDate.year}} included</pre>
-</div>
-
-<button class="btn btn-success" (click)="refresh()" >refresh</button>
 
 <app-add-booking [fromDate] = 'fromDate' [toDate]='toDate' [randomBoolean]='randomBoolean' >
 

@@ -3,6 +3,8 @@ import { BookingDataService } from '../booking-data.service';
 import { Component, OnInit } from '@angular/core';
 import {NgbDateStruct, NgbCalendar,NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
 import { AddBookingComponent } from '../add-booking/add-booking.component';
+import { Observable } from '../../../../node_modules/rxjs';
+import { Subject } from 'rxjs/Subject';
 
 
 const equals = (one: NgbDateStruct, two: NgbDateStruct) =>
@@ -28,7 +30,9 @@ export class CalendarComponent implements OnInit {
   hoveredDate: NgbDateStruct;
   
     fromDate: NgbDateStruct;
+    public _fromDate$ = new Subject<NgbDateStruct>();
     toDate: NgbDateStruct;
+    public _toDate$ = new Subject<NgbDateStruct>();
     model;
     randomBoolean : Boolean;
     
@@ -46,6 +50,7 @@ export class CalendarComponent implements OnInit {
       //   return d.getDay() === 0 || d.getDay() === 6;
       // };
       
+      
     }
     newBooking(booking: Booking){
       console.log("newBooking");
@@ -55,6 +60,8 @@ export class CalendarComponent implements OnInit {
     selectDate() {
       this.randomBoolean = true
     }
+
+    
   //   isDisabled = (date: NgbDateStruct, current: {month: number}) => {
   //     const d = new Date(date.year, date.month - 1, date.day);
   //     return this.isBookedDate(); // this is undefined

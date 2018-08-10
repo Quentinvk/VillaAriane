@@ -18,7 +18,7 @@ export class AuthenticationService {
   private readonly _tokenKey = 'currentUser';
   private readonly _url = '/API/users';
   private _user$: BehaviorSubject<string>;
-
+  private userName : string;
   public redirectUrl: string;
 
   constructor(private http: HttpClient) {
@@ -40,6 +40,10 @@ export class AuthenticationService {
     return this._user$;
   }
 
+  get user(): string{
+    return this.userName;
+  }
+
   get token(): string {
     const localToken = localStorage.getItem(this._tokenKey);
     return !!localToken ? localToken : '';
@@ -52,6 +56,8 @@ export class AuthenticationService {
         if (token) {
           localStorage.setItem(this._tokenKey, token);
           this._user$.next(username);
+          this.userName = username;
+          this._user$.subscribe(val => console.log(val));
           return true;
         } else {
           return false;

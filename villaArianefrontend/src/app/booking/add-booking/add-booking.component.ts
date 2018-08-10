@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Rx';
 import { Component, EventEmitter, OnInit, Output, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Booking } from '../booking.model';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AuthenticationService } from '../../user/authentication.service';
 
 @Component({
   selector: 'app-add-booking',
@@ -19,35 +20,35 @@ export class AddBookingComponent implements OnInit {
     @Input() public toDate: Date;
     @Input() public randomBoolean : Boolean;
     private errorMsg : string;
-   
+   private userName : string;
    constructor( 
       private fb : FormBuilder,
-      private data :BookingDataService
-   ){ }
-  
-  //  addBooking(newBookingUserName:HTMLInputElement,newBookingStartNight:HTMLInputElement,newBookingEndNight:HTMLInputElement,newBookingNrOfPersons:HTMLInputElement,newBookingWantsSheet:HTMLInputElement) : boolean{
-  //    let booking = new Booking(newBookingUserName.value,newBookingStartNight.valueAsDate,newBookingEndNight.valueAsDate,newBookingNrOfPersons.valueAsNumber,newBookingWantsSheet.checked);
-  //    this.newBooking.emit(booking);
-  //    return false;
-  //  }
-    
+      private data :BookingDataService, 
+      private auth : AuthenticationService
+   ){
+    this.auth.user$.subscribe(
+      val => this.userName = val
+    );
+    }    
    
 
   private booking: FormGroup;
 
-  ngOnInit() {
+   ngOnInit() {
       console.log(this.fromDate);
-      this.booking = this.fb.group({
-        userName: this.fb.control(' ', [Validators.required, Validators.minLength(3)]), 
+      this.booking =this.fb.group({
+        userName: this.fb.control( this.userName, [Validators.required, Validators.minLength(3)]), 
         startNight: this.fb.control( this.fromDate ,Validators.required),
         endNight: this.fb.control( this.toDate, Validators.required),
-        nrOfPersons: this.fb.control('1'),
+        nrOfPersons: this.fb.control('2'),
         wantsSheet: this.fb.control('false')
       })
+      
   }
 
+  
+
   onSubmit(){
-    console.log("submit");
     const booking = new Booking(
       this.booking.value.userName, 
       this.booking.value.startNight,   
@@ -63,27 +64,5 @@ export class AddBookingComponent implements OnInit {
     }
   )
   }
-
-  // createIngredients(): FormGroup {
-  //   return this.fb.group({
-  //     amount: [''],
-  //     unit: [''],
-  //     ingredientname: ['', [Validators.required, Validators.minLength(3)]]
-  //   });
-  // }
-
-  // onSubmit() {
-  //   let fn=this.booking.value.firstName;
-  //   let ln=this.booking.value.LastName;
-  //   let sd=this.booking.value.startDate;
-  //   let ed= this.booking.value.endDate;
-  //   let nroP = this.booking.value.NrOfPersons;
-  //   let ws = this.booking.value.wantsSheet;
-  //   const booking = new Booking(fn,ln,sd,ed,nroP,ws);
-
-   
-    
-  //   // this.newbooking.emit(booking);
-  // }
 
 }

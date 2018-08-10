@@ -17,6 +17,7 @@ import { WheaterComponent } from './wheater/wheater.component';
 import { BookingDetailComponent } from './booking-detail/booking-detail.component';
 import { BookingResolver} from './BookingResolver';
 import { httpInterceptorProviders } from '../http-interceptors/index';
+import { AuthenticationService } from '../user/authentication.service';
 
 
 const routes = [
@@ -52,7 +53,8 @@ const routes = [
   providers: [ 
     httpInterceptorProviders,
     BookingDataService,
-    BookingResolver 
+    BookingResolver ,
+    AuthenticationService
   ]
 })
 export class BookingModule { }

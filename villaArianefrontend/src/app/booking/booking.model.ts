@@ -33,6 +33,9 @@ export class Booking{
     get wantsSheet() : Boolean{
         return this._wantsSheet;
     }
+    get id() : string{
+        return this._id;
+    }
     // get totalPrice() : number {
     //     return this._totalPrice;
     // }
@@ -47,6 +50,7 @@ export class Booking{
     
     toJSON(){
         return {
+            _id: this._id,
             userName : this._userName,
             startNight : this._startNight,
             endNight : this._endNight,

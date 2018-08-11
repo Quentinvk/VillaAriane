@@ -6,7 +6,7 @@ import { Component, EventEmitter, OnInit, Output, Input, ChangeDetectionStrategy
 import { Booking } from '../booking.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthenticationService } from '../../user/authentication.service';
-import { NgbDateStruct } from '../../../../node_modules/@ng-bootstrap/ng-bootstrap';
+import { NgbDateStruct, NgbModal } from '../../../../node_modules/@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-add-booking',
@@ -22,10 +22,16 @@ export class AddBookingComponent implements OnInit {
     @Input() public randomBoolean : Boolean;
     private errorMsg : string;
    private userName : string;
+
+   closeResult: string;
+
+
    constructor( 
       private fb : FormBuilder,
       private data :BookingDataService, 
-      private auth : AuthenticationService
+      private auth : AuthenticationService,
+      private modalService: NgbModal,
+      private router: Router
    ){
     this.auth.user$.subscribe(
       val => this.userName = val
@@ -65,13 +71,19 @@ export class AddBookingComponent implements OnInit {
       this.booking.value.nrOfPersons, 
       this.booking.value.wantsSheet);
     this.newBooking.emit(booking);
-      
+    
     this.data.addNewBooking(booking).subscribe( () => {},
     (error: HttpErrorResponse) => {
       this.errorMsg = `Error ${error.status} while adding
         booking for ${booking.userName}: ${error.error}`;
     }
+
   )
+  this.router.navigate(['/']);
+  }
+
+  confirm(content) {
+    this.modalService.open(content, { size: 'sm' });
   }
 
 }

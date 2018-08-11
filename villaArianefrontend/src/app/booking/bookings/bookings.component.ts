@@ -10,27 +10,37 @@ import { Booking } from '../booking.model';
 })
 export class BookingsComponent implements OnInit {
 
-  private _bookings : any;
+  private _bookings : Booking[];
 
   public errorMsg: string;
 
   constructor(private data : BookingDataService) { }
 
-  ngOnInit() {
+  ngOnInit():void {
     
-    this.data.bookings.subscribe(res => {
-      console.log(res);
-      this._bookings = res;
-    }, err => {
-      console.log(err);
+    this.data.bookings.subscribe(
+      res => (this._bookings = res ), 
+      (error: HttpErrorResponse) => {
+      this.errorMsg = `Error ${
+        error.status
+      } while trying to retrieve bookings: ${error.error}`;
     });
-    // this._bookings = this.data.bookings;
-     console.log("bookings getting filled")
-    // this.data.bookings.subscribe(items => this._bookings=items);
+    
   }
 
   get bookings(){
     return this._bookings;
   }
 
+  deleteBooking(booking: Booking) {
+    
+    this.data.deleteBook(booking.id).subscribe(
+      item => (this._bookings = this._bookings.filter(val => item.id !== val.id)),
+      (error: HttpErrorResponse) => {
+        this.errorMsg = `Error ${error.status} while removing bookings for ${
+          booking.userName
+        }: ${error.error}`;
+      }
+    );
+  }
 }

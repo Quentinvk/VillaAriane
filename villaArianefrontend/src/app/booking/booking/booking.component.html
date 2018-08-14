@@ -1,9 +1,13 @@
-
-
 <div class="list-group">
-  <button type="button" class="list-group-item list-group-item-action" >
+  <button type="button" class="list-group-item list-group-item-action" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="isCollapsed" aria-controls="bookingDetails" >
     booking for {{booking.userName}} 
   </button>
-
-  <router-outlet></router-outlet>
-<p *ngIf = 'booking.startNight==null '>startNight is empty</p>
+  </div>
+  <div id="bookingDetails" [ngbCollapse]="isCollapsed">
+    <div class="card">
+      <div class="card-body">
+        <app-booking-detail></app-booking-detail>
+        <button type="button" class="btn btn-danger" (click)="removeBooking()" >Delete</button>
+      </div>
+    </div>
+  </div>  

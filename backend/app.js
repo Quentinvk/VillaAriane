@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 let passport = require('passport');
-mongoose.Promise('bluebird');
+mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://localhost/arianedb', {  useMongoClient: true });
 let jwt = require('jsonwebtoken');
 

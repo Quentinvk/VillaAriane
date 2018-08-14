@@ -9,7 +9,7 @@ export class Booking{
     // private _pricePerNight = 60;
     // private _pricePerSheet: number = 5;
     // private _totalPrice : number;
-     private _chef: string;
+    
 
     constructor(userName : String ,startNight : Date, endNight : Date,  NrOfPersons : number, wantsSheet : Boolean){
         this._userName = userName;
@@ -32,6 +32,9 @@ export class Booking{
     }
     get wantsSheet() : Boolean{
         return this._wantsSheet;
+    }
+    get id(): string{
+        return this._id;
     }
     // get totalPrice() : number {
     //     return this._totalPrice;
@@ -57,14 +60,13 @@ export class Booking{
 
     static fromJSON(json: any): Booking {
         const rec = new Booking(
-            json._userName,
-            json._startNight,
-            json._endNight,
-            json._nrOfPersons,
-            json._wantsSheet
+            json.userName,
+            json.startNight,
+            json.endNight,
+            json.nrOfPersons,
+            json.wantsSheet
         );
         rec._id = json._id;
-        rec._chef = json.chef;
         return rec;
       }
 

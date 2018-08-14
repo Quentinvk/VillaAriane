@@ -7,17 +7,20 @@ import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./booking.component.css']
 })
 export class BookingComponent implements OnInit {
-  @Input() public booking : Booking;
+  @Input() public _booking : Booking;
   @Output() public delete = new EventEmitter<Booking>();
   
   public isCollapsed = true;
   constructor() { }
 
   ngOnInit() {
-    console.log("booking getting called");
+    console.log(this._booking);
   }
 
   removeBooking() {
     this.delete.emit(this.booking);
+  }
+  get booking(): Booking{
+    return this._booking
   }
 }

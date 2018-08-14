@@ -56,8 +56,8 @@ export class BookingDataService {
   
   getBooking(id: string): Observable<any> {
     return this.http
-      .get(`${_appUrl}/booking/${id}`, httpOptions)
-      .pipe(map(this.extractData), 
+      .get(`${_appUrl}/booking/${id}`)
+      .pipe(map(Booking.fromJSON), 
       catchError(this.handleError)
     );
   }

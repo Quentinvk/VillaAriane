@@ -16,7 +16,7 @@ import { StudioComponent } from './studio/studio.component';
 import { WheaterComponent } from './wheater/wheater.component';
 import { BookingDetailComponent } from './booking-detail/booking-detail.component';
 import { BookingResolver} from './BookingResolver';
-import { httpInterceptorProviders } from '../http-interceptors';
+import { httpInterceptorProviders } from '../http-interceptors/index';
 
 
 const routes: Routes = [

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Booking } from '../booking.model';
 import { ActivatedRoute } from '@angular/router';
 import { BookingDataService } from '../booking-data.service';
+import { HttpErrorResponse } from '../../../../node_modules/@angular/common/http';
 
 @Component({
   selector: 'app-booking-detail',
@@ -10,20 +11,18 @@ import { BookingDataService } from '../booking-data.service';
 })
 export class BookingDetailComponent implements OnInit {
 
-  private _booking : Booking;
+  @Input() _booking : Booking;
+  errorMsg: string;
   
   constructor(private route: ActivatedRoute, 
               private data: BookingDataService
   ) { }
 
   ngOnInit() {
-    //  this.route.paramMap.subscribe(pa => 
-    //   this.data.getBooking(pa.get('id'))
-    //   .subscribe(item => this._booking=item)  
-    // );
-
-    // use resolver (route.data)
-    this.route.data.subscribe(item => this._booking= item['booking']);
+    
   }
-
+  
+  get booking() : Booking{
+    return this._booking;
+  }
 }

@@ -1,12 +1,12 @@
 <div class="list-group">
-  <button type="button" class="list-group-item list-group-item-action" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="isCollapsed" aria-controls="bookingDetails" >
+  <button type="button"  class="list-group-item list-group-item-action" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="isCollapsed" aria-controls="bookingDetails" >
     booking for {{booking.userName}} 
   </button>
   </div>
   <div id="bookingDetails" [ngbCollapse]="isCollapsed">
     <div class="card">
       <div class="card-body">
-        <app-booking-detail></app-booking-detail>
+        <app-booking-detail [_booking] = 'booking'></app-booking-detail>
         <button type="button" class="btn btn-danger" (click)="removeBooking()" >Delete</button>
       </div>
     </div>

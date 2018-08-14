@@ -17,10 +17,11 @@ import { WheaterComponent } from './wheater/wheater.component';
 import { BookingDetailComponent } from './booking-detail/booking-detail.component';
 import { BookingResolver} from './BookingResolver';
 import { httpInterceptorProviders } from '../http-interceptors/index';
+import { AuthenticationService } from '../user/authentication.service';
 import { Calendar2Component } from './calendar2/calendar2.component';
 
 
-const routes: Routes = [
+const routes = [
   { path: 'home', component: HomeComponent},
   { path: 'bookings', component: BookingsComponent },
   { path: 'add-booking', component: AddBookingComponent },
@@ -33,9 +34,10 @@ const routes: Routes = [
     HttpClientModule,
     CommonModule,
     ReactiveFormsModule,
+    RouterModule.forChild(routes),
     FormsModule,
     NgbModule,
-    RouterModule.forChild(routes),
+    
   ],
   declarations: [
     HomeComponent,
@@ -50,10 +52,11 @@ const routes: Routes = [
     BookingDetailComponent,
     Calendar2Component,
   ],
-  providers: [ BookingDataService,
-                BookingResolver,
-               //interceptors
-                httpInterceptorProviders
-   ]
+  providers: [ 
+    httpInterceptorProviders,
+    BookingDataService,
+    BookingResolver ,
+    AuthenticationService
+  ]
 })
 export class BookingModule { }

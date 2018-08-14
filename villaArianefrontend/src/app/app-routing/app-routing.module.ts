@@ -21,7 +21,7 @@ const appRoutes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(appRoutes, 
-      {preloadingStrategy: SelectivePreloadStrategy, enableTracing:true} )
+      {preloadingStrategy: SelectivePreloadStrategy} )
   ],
   providers: [SelectivePreloadStrategy],
   declarations: [],

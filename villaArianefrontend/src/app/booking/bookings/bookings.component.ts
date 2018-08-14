@@ -16,7 +16,7 @@ export class BookingsComponent implements OnInit {
 
   constructor(private data : BookingDataService) { }
 
-  ngOnInit() {
+  ngOnInit():void {
     
     this.data.bookings.subscribe(  
       res => (this._bookings = res ), 

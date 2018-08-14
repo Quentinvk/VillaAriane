@@ -23,7 +23,7 @@ require('./config/passport');
 var index = require('./routes/index');
 var users = require('./routes/users');
 
-// let cors = require('cors');
+//let cors = require('cors');
 var app = express();
 
 // uncomment after placing your favicon in /public

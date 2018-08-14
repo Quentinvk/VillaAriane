@@ -22,9 +22,10 @@ import { HttpClientModule } from '../../node_modules/@angular/common/http';
     UserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     NgbModule.forRoot(),
-    FormsModule,
-    ReactiveFormsModule
+    FormsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

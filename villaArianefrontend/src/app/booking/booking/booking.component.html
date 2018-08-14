@@ -1,11 +1,16 @@
 <div class="list-group">
+<<<<<<< HEAD
   <button type="button"  class="list-group-item list-group-item-action" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="isCollapsed" aria-controls="bookingDetails" >
+=======
+  <button type="button" class="list-group-item list-group-item-action" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="isCollapsed" aria-controls="bookingDetails" >
+>>>>>>> de6aba0dc8785f3084fe1eafe61e0a0c839f64b3
     booking for {{booking.userName}} 
   </button>
   </div>
   <div id="bookingDetails" [ngbCollapse]="isCollapsed">
     <div class="card">
       <div class="card-body">
+<<<<<<< HEAD
         <app-booking-detail [_booking] = 'booking'></app-booking-detail>
         <button type="button" class="btn btn-primary" (click)="editBooking()">Edit</button>
         
@@ -13,3 +18,13 @@
       </div>
     </div>
   </div>  
+=======
+      {{booking | json}}
+        <app-booking-detail></app-booking-detail>
+        <button type="button" class="btn btn-danger" (click)="removeBooking()">Delete</button>
+      </div>
+    </div>
+  </div>  
+  <router-outlet></router-outlet>
+
+>>>>>>> de6aba0dc8785f3084fe1eafe61e0a0c839f64b3

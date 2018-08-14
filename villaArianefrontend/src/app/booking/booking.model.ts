@@ -50,6 +50,7 @@ export class Booking{
     
     toJSON(){
         return {
+            _id: this._id,
             userName : this._userName,
             startNight : this._startNight,
             endNight : this._endNight,

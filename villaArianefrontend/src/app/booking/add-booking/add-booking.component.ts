@@ -85,7 +85,4 @@ export class AddBookingComponent implements OnInit {
   confirm(content) {
     this.modalService.open(content, { size: 'sm' });
   }
-  backHome(){
-    
-  }
 }

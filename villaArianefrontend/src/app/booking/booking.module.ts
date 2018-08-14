@@ -17,6 +17,7 @@ import { WheaterComponent } from './wheater/wheater.component';
 import { BookingDetailComponent } from './booking-detail/booking-detail.component';
 import { BookingResolver} from './BookingResolver';
 import { httpInterceptorProviders } from '../http-interceptors/index';
+import { Calendar2Component } from './calendar2/calendar2.component';
 
 
 const routes: Routes = [
@@ -47,6 +48,7 @@ const routes: Routes = [
     StudioComponent,
     WheaterComponent,
     BookingDetailComponent,
+    Calendar2Component,
   ],
   providers: [ BookingDataService,
                 BookingResolver,

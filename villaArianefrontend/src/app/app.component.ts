@@ -2,6 +2,8 @@ import { Booking } from './booking/booking.model';
 import { Component } from '@angular/core';
 
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { AuthenticationService } from './user/authentication.service';
+import { Observable } from '../../node_modules/rxjs';
 
 @Component({
   selector: 'app-root',
@@ -16,8 +18,10 @@ export class AppComponent implements OnInit {
   ngOnInit() {
      
   }
-  constructor( ){
-    
+  constructor(private authService: AuthenticationService) {}
+
+  get currentUser(): Observable<string> {
+    return this.authService.user$;
   }
   
   

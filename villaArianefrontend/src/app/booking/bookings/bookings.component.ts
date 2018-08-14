@@ -41,5 +41,7 @@ export class BookingsComponent implements OnInit {
       }
     );
   }
+
+  
   
 }

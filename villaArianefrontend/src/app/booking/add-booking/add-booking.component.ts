@@ -5,6 +5,8 @@ import { Observable } from 'rxjs/Rx';
 import { Component, EventEmitter, OnInit, Output, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Booking } from '../booking.model';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AuthenticationService } from '../../user/authentication.service';
+import { NgbDateStruct, NgbModal } from '../../../../node_modules/@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-add-booking',
@@ -15,75 +17,75 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class AddBookingComponent implements OnInit {
     @Output() public newBooking = new EventEmitter<Booking>();
 
-    @Input() public fromDate: Date;
-    @Input() public toDate: Date;
+    @Input() public fromDate: NgbDateStruct;
+    @Input() public toDate: NgbDateStruct;
     @Input() public randomBoolean : Boolean;
     private errorMsg : string;
-   
+   private userName : string;
+
+   closeResult: string;
+
+
    constructor( 
       private fb : FormBuilder,
-      private data :BookingDataService
-   ){ }
-  
-  //  addBooking(newBookingUserName:HTMLInputElement,newBookingStartNight:HTMLInputElement,newBookingEndNight:HTMLInputElement,newBookingNrOfPersons:HTMLInputElement,newBookingWantsSheet:HTMLInputElement) : boolean{
-  //    let booking = new Booking(newBookingUserName.value,newBookingStartNight.valueAsDate,newBookingEndNight.valueAsDate,newBookingNrOfPersons.valueAsNumber,newBookingWantsSheet.checked);
-  //    this.newBooking.emit(booking);
-  //    return false;
-  //  }
-    
+      private data :BookingDataService, 
+      private auth : AuthenticationService,
+      private modalService: NgbModal,
+      private router: Router
+   ){
+    this.auth.user$.subscribe(
+      val => this.userName = val
+    );
+    }    
    
 
   private booking: FormGroup;
 
-  ngOnInit() {
+   ngOnInit() {
       console.log(this.fromDate);
-      this.booking = this.fb.group({
-        userName: this.fb.control(' ', [Validators.required, Validators.minLength(3)]), 
-        startNight: this.fb.control( this.fromDate ,Validators.required),
-        endNight: this.fb.control( this.toDate, Validators.required),
-        nrOfPersons: this.fb.control('1'),
+      this.booking =this.fb.group({
+        userName: this.fb.control( this.userName, [Validators.required, Validators.minLength(3)]), 
+        startNight: this.fb.control(Validators.required),
+        endNight: this.fb.control( Validators.required),
+        nrOfPersons: this.fb.control('2'),
         wantsSheet: this.fb.control('false')
       })
+      
   }
+  
+  
 
   onSubmit(){
-    console.log("submit");
+    let startNight = new Date();
+    startNight.setDate(this.fromDate.day);
+    startNight.setMonth(this.fromDate.month);
+    startNight.setFullYear(this.fromDate.year);
+    let endNight = new Date();
+    endNight.setDate(this.toDate.day);
+    endNight.setMonth(this.toDate.month);
+    endNight.setFullYear(this.toDate.year);
     const booking = new Booking(
       this.booking.value.userName, 
-      this.booking.value.startNight,   
-      this.booking.value.endNight, 
-      this.booking.value.nrOfPersonsm, 
+      startNight,
+      endNight,
+      this.booking.value.nrOfPersons, 
       this.booking.value.wantsSheet);
     this.newBooking.emit(booking);
-      
+    
     this.data.addNewBooking(booking).subscribe( () => {},
     (error: HttpErrorResponse) => {
       this.errorMsg = `Error ${error.status} while adding
         booking for ${booking.userName}: ${error.error}`;
     }
+
   )
+  this.router.navigate(['/']);
   }
 
-  // createIngredients(): FormGroup {
-  //   return this.fb.group({
-  //     amount: [''],
-  //     unit: [''],
-  //     ingredientname: ['', [Validators.required, Validators.minLength(3)]]
-  //   });
-  // }
-
-  // onSubmit() {
-  //   let fn=this.booking.value.firstName;
-  //   let ln=this.booking.value.LastName;
-  //   let sd=this.booking.value.startDate;
-  //   let ed= this.booking.value.endDate;
-  //   let nroP = this.booking.value.NrOfPersons;
-  //   let ws = this.booking.value.wantsSheet;
-  //   const booking = new Booking(fn,ln,sd,ed,nroP,ws);
-
-   
+  confirm(content) {
+    this.modalService.open(content, { size: 'sm' });
+  }
+  backHome(){
     
-  //   // this.newbooking.emit(booking);
-  // }
-
+  }
 }

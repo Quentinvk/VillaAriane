@@ -7,6 +7,8 @@
     <div class="card">
       <div class="card-body">
         <app-booking-detail [_booking] = 'booking'></app-booking-detail>
+        <button type="button" class="btn btn-primary" (click)="editBooking()">Edit</button>
+        
         <button type="button" class="btn btn-danger" (click)="removeBooking()" >Delete</button>
       </div>
     </div>

@@ -51,6 +51,7 @@ const routes = [
     WheaterComponent,
     BookingDetailComponent,
     Calendar2Component,
+    
   ],
   providers: [ 
     httpInterceptorProviders,

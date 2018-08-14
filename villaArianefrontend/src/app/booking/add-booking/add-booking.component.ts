@@ -56,6 +56,8 @@ export class AddBookingComponent implements OnInit {
   
 
   onSubmit(){
+    console.log(this.booking.value.wantsSheet);
+
     let startNight = new Date();
     startNight.setDate(this.fromDate.day);
     startNight.setMonth(this.fromDate.month);

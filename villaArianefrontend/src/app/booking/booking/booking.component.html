@@ -1,18 +1,60 @@
-<div class="list-group">
-  <button type="button" class="list-group-item list-group-item-action" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="isCollapsed" aria-controls="bookingDetails" >
+<div class="card border-primary infoCard ">
+  <button type="button" class="list-group-item list-group-item-action info text-secondary" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="isCollapsed" aria-controls="bookingDetails" >
     booking for {{booking.userName}} 
   </button>
-  </div>
   <div id="bookingDetails" [ngbCollapse]="isCollapsed">
-    <div class="card">
-      <div class="card-body">
-        <app-booking-detail [_booking] = 'booking'></app-booking-detail>
-        <div class="btn-group-sm ">
-          <button type="button" class="btn btn-primary " (click)="editBooking()">Edit</button>
+    
+    <div class="card-body border-dark " [ngbCollapse]="!isEdit">
+      <app-booking-detail [_booking] = 'booking'></app-booking-detail>
+          
+    </div>  
+  
+    <div [ngbCollapse]="isEdit">
         
-        <button type="button" class="btn btn-danger" (click)="removeBooking()" >Delete</button>
-        </div>
-        
+
+    
+    <form [formGroup] = 'bookingForm' (ngSubmit) = 'onSubmit()' class="form-group" >
+      
+      <div>
+        <br>
+        <label for='userName_id' >username:</label>
+        <input type="text" id="userName_id" formControlName = 'userName' class="form-control" #spy>
+        <br>
+        <label for='startNight_id'>startNight:</label>
+        <input type="date" placeholder="{{booking.startNight | date:'yyyy-mm-dd'}}" id="startNight_id" formControlName = 'startNight' class="form-control">
+        <label for='endNight_id'>endNight:</label>
+        <input type="date" placeholder="booking.endNight" id="endNight_id" formControlName = 'endNight' class="form-control">
+        <label for='nrOfPersons_id'>number of Persons:</label>
+        <br>
+        <select id="nrOfPersons_id" formControlName = 'nrOfPersons' class="form-control">
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select>
+        <label for='wantsSheet_id' >Do you wish sheets? </label>
+        <input type="checkbox" id="wantsSheet_id" formControlName = 'wantsSheet' >
       </div>
-    </div>
+      <div>
+        <button type="submit" class="btn btn-success" (click)="editBooking()" >save</button>
+      </div>
+    </form>
+    
+  </div>
+      
+      
+      
+      
+      
+      
+      <div class="btn-group-sm ">
+        <button type="button" class="btn btn-primary "  (click)="isEdit = !isEdit" [attr.aria-expanded]="isEdit">Edit</button>
+      
+      <button type="button" class="btn btn-danger" (click)="removeBooking()" >Delete</button>
+      </div>
+      
+    
+  
   </div>  
+
+  
+</div>
+  

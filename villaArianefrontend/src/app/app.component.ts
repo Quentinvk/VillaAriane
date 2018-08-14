@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { AuthenticationService } from './user/authentication.service';
 import { Observable } from '../../node_modules/rxjs';
+import { NgbdDatepickerPopup } from './datepicker-popup';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ import { Observable } from '../../node_modules/rxjs';
 export class AppComponent implements OnInit {
   
   title = 'Villa Ariane';
-
+  model;
   ngOnInit() {
      
   }

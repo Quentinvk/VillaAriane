@@ -1,20 +1,33 @@
 import { Booking } from '../booking.model';
 import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
-
+import { FormGroup, FormBuilder, Validators } from '../../../../node_modules/@angular/forms';
+import { NgbCalendar, NgbModule } from '../../../../node_modules/@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
-  styleUrls: ['./booking.component.css']
+  styleUrls: ['./booking.component.css'],
+  
 })
 export class BookingComponent implements OnInit {
   @Input() public _booking : Booking;
   @Output() public delete = new EventEmitter<Booking>();
-  
+  @Output() public editBooking = new EventEmitter<Booking>();
+
+  model;
   public isCollapsed = true;
-  constructor() { }
+  public isEdit = true;
+  constructor(private fb : FormBuilder) { }
+
+  private bookingForm: FormGroup;
 
   ngOnInit() {
-    console.log(this._booking);
+    this.bookingForm =this.fb.group({
+      userName: this.fb.control( this._booking.userName, [Validators.required, Validators.minLength(3)]), 
+      startNight: this.fb.control(this._booking.startNight, Validators.required),
+      endNight: this.fb.control(this._booking.endNight, Validators.required),
+      nrOfPersons: this.fb.control(this._booking.nrOfPersons),
+      wantsSheet: this.fb.control(this._booking.wantsSheet)
+    })
   }
 
   removeBooking() {
@@ -22,5 +35,9 @@ export class BookingComponent implements OnInit {
   }
   get booking(): Booking{
     return this._booking
+  }
+
+  edit(){
+    
   }
 }

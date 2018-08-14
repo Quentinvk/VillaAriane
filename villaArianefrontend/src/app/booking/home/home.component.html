@@ -66,7 +66,6 @@
       </ng-template>
     </ngb-tab>
     <ngb-tab class="logintab">
-<<<<<<< HEAD
       <ng-template ngbTabTitle><label *ngIf='(currentUser | async) else loginlink' class="item" routerLinkActive='active' routerLink="/logout">{{currentUser|async}}</label>
         <ng-template #loginlink>
           <label class="item" routerLinkActive='active' routerLink="/login"><b>log in</b></label>
@@ -77,16 +76,3 @@
 </section>
 
 <router-outlet></router-outlet>
-=======
-        <ng-template ngbTabTitle><label *ngIf='(currentUser | async) else loginlink' class="item" routerLinkActive='active' routerLink="/logout">{{currentUser|async}}</label>
-          <ng-template #loginlink>
-            <label class="item" routerLinkActive='active' routerLink="/login"><b>log in</b></label>
-          </ng-template>
-        </ng-template>
-      </ngb-tab>
-</ngb-tabset>
-</section>
-
-
-<router-outlet></router-outlet>
->>>>>>> de6aba0dc8785f3084fe1eafe61e0a0c839f64b3

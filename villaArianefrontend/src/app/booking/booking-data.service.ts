@@ -47,8 +47,8 @@ export class BookingDataService {
        );
    }
     
-   updateBook(data): Observable<any> {
-    return this.http.put(_appUrl, data, httpOptions)
+   updateBook(booking : Booking): Observable<any> {
+    return this.http.put(`${_appUrl}/booking/${booking.id}`, booking, httpOptions)
       .pipe(
         catchError(this.handleError)
       );

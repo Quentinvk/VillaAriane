@@ -7,7 +7,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { UserModule } from './user/user.module';
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
-import { NgbdDatepickerPopup } from './datepicker-popup';
 
 
 
@@ -15,8 +14,7 @@ import { NgbdDatepickerPopup } from './datepicker-popup';
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent,
-    NgbdDatepickerPopup
+    PageNotFoundComponent
     
   ],
   imports: [
@@ -25,7 +23,7 @@ import { NgbdDatepickerPopup } from './datepicker-popup';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgbModule.forRoot(),
+    NgbModule,
     FormsModule,
     
     

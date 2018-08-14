@@ -21,9 +21,25 @@
         <input type="text" id="userName_id" formControlName = 'userName' class="form-control" #spy>
         <br>
         <label for='startNight_id'>startNight:</label>
-        <input type="date" placeholder="{{booking.startNight | date:'yyyy-mm-dd'}}" id="startNight_id" formControlName = 'startNight' class="form-control">
+        <div class="input-group">
+            <input class="form-control" placeholder="{{booking.startNight | date:'dd-mm-yy'}}"
+                   name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" id="startNight_id" formControlName='startNight'>
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                <img src="../../../assets/images/baseline-calendar_today-24px.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+              </button>
+            </div>
+          </div>
         <label for='endNight_id'>endNight:</label>
-        <input type="date" placeholder="booking.endNight" id="endNight_id" formControlName = 'endNight' class="form-control">
+        <div class="input-group">
+            <input class="form-control" placeholder="{{booking.endNight | date:'dd-mm-yy'}}"
+                   name="dp" [(ngModel)]="model2" ngbDatepicker #d2="ngbDatepicker" id="endNight_id" formControlName='endNight'>
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" (click)="d2.toggle()" type="button">
+                <img src="../../../assets/images/baseline-calendar_today-24px.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+              </button>
+            </div>
+          </div>
         <label for='nrOfPersons_id'>number of Persons:</label>
         <br>
         <select id="nrOfPersons_id" formControlName = 'nrOfPersons' class="form-control">
@@ -34,7 +50,7 @@
         <input type="checkbox" id="wantsSheet_id" formControlName = 'wantsSheet' >
       </div>
       <div>
-        <button type="submit" class="btn btn-success" (click)="editBooking()" >save</button>
+        <button type="submit" class="btn btn-success"  (click)="isEdit = !isEdit" >save</button>
       </div>
     </form>
     

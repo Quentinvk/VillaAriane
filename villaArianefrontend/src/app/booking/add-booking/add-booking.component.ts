@@ -53,8 +53,6 @@ export class AddBookingComponent implements OnInit {
       
   }
   
-  
-
   onSubmit(){
     console.log(this.booking.value.wantsSheet);
 

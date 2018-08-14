@@ -42,6 +42,13 @@ export class BookingsComponent implements OnInit {
     );
   }
 
-  
+  editBooking(booking:Booking){
+    this.data.updateBook(booking).subscribe(
+      (error: HttpErrorResponse) => {
+        this.errorMsg = `Error ${error.status} while editing booking ${booking.userName}: ${error.error}`;
+      }
+    )
+    
+  }
   
 }

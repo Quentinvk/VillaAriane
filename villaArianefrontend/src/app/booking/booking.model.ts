@@ -27,7 +27,7 @@ export class Booking{
     get endNight() : Date{
         return this._endNight;
     }
-    get nrOfPersons() : Number{
+    get nrOfPersons() : number{
         return this._nrOfPersons;
     }
     get wantsSheet() : Boolean{
@@ -36,6 +36,23 @@ export class Booking{
     get id(): string{
         return this._id;
     }
+
+    setUserName(userName: string){
+        this._userName = userName;
+    }
+    setStartNight(startNight: Date){
+        this._startNight = startNight;
+    }
+    setEndNight(endNight: Date){
+        this._endNight = endNight;
+    }
+    setNrOfPersons(nrOfPersons : number){
+        this._nrOfPersons = nrOfPersons;
+    }
+    setWantsSheet(wantSheet: Boolean){
+        this._wantsSheet = wantSheet;
+    }
+
     // get totalPrice() : number {
     //     return this._totalPrice;
     // }

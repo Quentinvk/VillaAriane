@@ -7,9 +7,7 @@ mongoose.Promise = require('bluebird');
 
 let auth = jwt({secret: process.env.BOOKING_BACKEND_SECRET});
 
-router.get('/', function(req, res, next) {
-  res.send('server works');
-});
+
 
 router.get('/API/bookings/', function(req, res, next) {
   Book.find(function(err, bookings) {

@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 let passport = require('passport');
 mongoose.Promise = require('bluebird');
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/arianedb');
+mongoose.connect(process.env.VILAARIANE_DATABASE || 'mongodb://localhost/arianedb');
 let jwt = require('jsonwebtoken');
 
 
@@ -36,7 +36,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 
-app.use('', index);
+app.use('/', index);
 app.use('/API/users', users);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

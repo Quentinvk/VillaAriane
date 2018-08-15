@@ -46,8 +46,8 @@ router.delete('/API/booking/:booking', auth,  function(req, res, next) {
   });
 });
 
-router.put('/API/booking/:booking', auth,  function(req, res, next) {
-  req.booking.save( function(err) {
+router.put('/API/booking/:booking',  function(req, res, next) {
+  req.booking.update( function(err) {
     if (err) { return next(err); }   
     res.json("booking updated");
   });

@@ -19,7 +19,7 @@ export class BookingDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
+    console.log(this._booking.startNight);
   }
   
   get booking() : Booking{

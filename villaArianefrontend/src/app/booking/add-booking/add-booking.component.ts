@@ -54,7 +54,7 @@ export class AddBookingComponent implements OnInit {
   }
   
   onSubmit(){
-
+    
     let startNight = new Date();
     startNight.setDate(this.fromDate.day);
     startNight.setMonth(this.fromDate.month-1);

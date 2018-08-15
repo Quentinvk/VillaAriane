@@ -22,7 +22,7 @@
         <br>
         <label for='startNight_id'>startNight:</label>
         <div class="input-group">
-            <input class="form-control" placeholder="{{booking.startNight | date:'dd-mm-yy'}}"
+            <input class="form-control" placeholder="{{booking.startNight | date}}"
                    name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" id="startNight_id" formControlName='startNight'>
             <div class="input-group-append">
               <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
@@ -32,7 +32,7 @@
           </div>
         <label for='endNight_id'>endNight:</label>
         <div class="input-group">
-            <input class="form-control" placeholder="{{booking.endNight | date:'dd-mm-yy'}}"
+            <input class="form-control" placeholder="{{booking.endNight | date}}"
                    name="dp" [(ngModel)]="model2" ngbDatepicker #d2="ngbDatepicker" id="endNight_id" formControlName='endNight'>
             <div class="input-group-append">
               <button class="btn btn-outline-secondary" (click)="d2.toggle()" type="button">

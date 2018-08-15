@@ -1,6 +1,6 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgbDateStruct, NgbCalendar } from '../../../../node_modules/@ng-bootstrap/ng-bootstrap';
-import { EventEmitter } from '../../../../node_modules/protractor';
+
 
 
 
@@ -24,7 +24,7 @@ const after = (one: NgbDateStruct, two: NgbDateStruct) =>
     
 export class Calendar2Component implements OnInit {
 
-  // @Output() public _closeCalendar = new EventEmitter();
+  @Output() public _closeCalendar = new EventEmitter();
 
   ngOnInit(): void {
     
@@ -56,7 +56,7 @@ export class Calendar2Component implements OnInit {
   isFrom = date => equals(date, this.fromDate);
   isTo = date => equals(date, this.toDate);
 
-  // closeCalendar(){
-  //     this._closeCalendar.emit();
-  // }
+  closeCalendar(){
+      this._closeCalendar.emit();
+  }
 }

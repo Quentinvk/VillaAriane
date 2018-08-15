@@ -23,6 +23,9 @@ export class BookingComponent implements OnInit {
   private bookingForm: FormGroup;
 
   ngOnInit() {
+    console.log(this.model);
+    console.log(this._booking.startNight);
+    console.log(this._booking.endNight);
     this.bookingForm =this.fb.group({
       userName: this.fb.control( this._booking.userName, [Validators.required, Validators.minLength(3)]), 
       startNight: this.fb.control(this._booking.startNight, Validators.required),
@@ -55,6 +58,7 @@ export class BookingComponent implements OnInit {
       this._booking.setWantsSheet( this.bookingForm.value.wantsSheet);
       this._booking.setNrOfPersons( this.bookingForm.value.nrOfPersons);
 
+      console.log(this._booking);
     this.edit.emit(this._booking);
   }
 

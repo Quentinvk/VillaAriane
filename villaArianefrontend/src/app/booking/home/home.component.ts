@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
         this.show="Show Calendar";
   }
 
-  closeCalendar(string){
+  closeCalendar(){
     this.isCollapsed=true;
   }
 }

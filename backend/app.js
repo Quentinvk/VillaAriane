@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 let passport = require('passport');
 mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://localhost/arianedb', {  useMongoClient: true });
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/arianedb');
 let jwt = require('jsonwebtoken');
 
 
@@ -25,7 +25,8 @@ var users = require('./routes/users');
 
 //let cors = require('cors');
 var app = express();
-
+let cors = require('cors');
+app.use(cors({origin: "*"}));
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));

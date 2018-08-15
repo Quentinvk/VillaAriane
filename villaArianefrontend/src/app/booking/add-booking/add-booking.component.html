@@ -1,0 +1,71 @@
+<!-- <div class="ui large form segment">
+    <h3 class="ui header">Add booking</h3>
+    <div class="field">
+      <ul>
+        <li><label for="userName">Username:</label> 
+          <input id="userName" name="userName" #newbookingUserName></li>
+        <li><label for="startNight">Startnight:</label>
+          <input id="startNight" name="startNight" #newbookingStartNight>
+        </li>
+        <li> <label for="endNight">EndNight:</label>
+          <input id="endNight" name="startNight" #newbookingEndNight>
+        </li>
+        <li> <label for="nrOfPersons">How many are joining you?</label>
+          <input id="nrOfPersons" name="nrOfPersons" #newbookingNrOfPersons>
+        </li>
+        <li> <label for="wantsSheet">Do you wish sheets? </label>
+          <input id="wantsSheet" name="wantsSheet" #newbookingWantsSheet>
+        </li>
+      </ul>
+      
+    </div>
+    <button (click)="addBooking(newbookingUserName,newbookingStartNight,newbookingEndNight,newbookingNrOfPersons,newbookingWantsSheet)"
+          class="ui positive right floated button">
+      add booking 
+    </button>
+  </div> -->
+
+  <form [formGroup] = 'booking' (ngSubmit) = 'onSubmit()' class="form-group">
+    <h3>Add Booking</h3>
+    <div>
+      <label for='userName_id'>username:</label>
+      <input type="text" id="userName_id" formControlName = 'userName' #spy>
+      <div *ngIf='booking.get("userName").errors?.required && booking.get("userName").touched' 
+    class='ui pointing red basic label'>
+    error! this is required
+  </div>
+      <label for='startNight_id'>startNight:</label>
+      <!-- <input type="date" id="startNight_id" formControlName = 'startNight' ng-disabled="true" value="{fromDate}"> -->
+      <input type="text" ngbDatepicker [(ngModel)]="fromDate" id="startNight_id" formControlName = 'startNight' class="form-control">
+      <label for='endNight_id'>endNight:</label>
+      <!-- <input type="date" id="endNight_id" formControlName = 'endNight' ng-disabled="true" value="{toDate}"> -->
+      <input type="text" ngbDatepicker [(ngModel)]="toDate" id="endNight_id" formControlName = 'endNight' class="form-control">
+      <label for='nrOfPersons_id'>number of Persons:</label>
+      <select id="nrOfPersons_id" formControlName = 'nrOfPersons' class="selector-1">
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
+      <label for='wantsSheet_id'>Do you wish sheets?</label>
+      <input type="checkbox" id="wantsSheet_id" formControlName = 'wantsSheet'>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-success" (click)="confirm(content)" >add</button>
+    </div>
+  </form>
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Congratulations</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Your stay has been booked!</p>
+    <p>Find all your bookings in the bookingstab</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>

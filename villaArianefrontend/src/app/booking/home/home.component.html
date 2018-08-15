@@ -1,0 +1,78 @@
+<section class="sections">
+<ngb-tabset justify="center" type="pills" [orientation]="currentOrientation" class="nav">
+  
+<ngb-tab  >
+    <ng-template ngbTabTitle><b>Home</b> </ng-template>
+  <ng-template ngbTabContent>
+    <section>
+      <div class="carousel carousel-item-left ">
+          <app-carousel></app-carousel>
+      </div>
+    </section>  
+      <p>
+          <button type="button" class="btn btn-outline-primary" (click)="isCollapsed = !isCollapsed "
+                  [attr.aria-expanded]="isCollapsed" aria-controls="collapseExample" (click)="changeButtonLabel()">
+                    {{show}}
+          </button>
+        </p>
+        <div id="collapseExample" [ngbCollapse]="isCollapsed">
+          <div class="card">
+            <div class="card-body">
+              <span class="calendarcomp">
+                 <app-calendar2 (_closeCalendar)='closeCalendar()'></app-calendar2> 
+              </span>
+      
+            </div>
+          </div>
+        </div>
+      
+        <Section class="wheater">
+          <app-wheater></app-wheater>
+          Some wheater api here.
+        </Section>
+  </ng-template>
+</ngb-tab>
+<ngb-tab>
+  <ng-template ngbTabTitle><b>Studio</b> </ng-template>
+  <ng-template ngbTabContent>
+  </ng-template>
+</ngb-tab>
+<!-- //hover tooltip for "comming soon" -->
+<ngb-tab title="House" [disabled]="true">
+  <ng-template ngbTabContent>
+  </ng-template>
+</ngb-tab>
+<ngb-tab>
+    <ng-template ngbTabTitle><b>Gallery</b></ng-template>
+    <ng-template ngbTabContent>
+      <app-gallery></app-gallery>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab>
+    <ng-template ngbTabTitle ><b>Bookings</b></ng-template>
+    <ng-template ngbTabContent>
+       <app-bookings></app-bookings> 
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab>
+      <ng-template ngbTabTitle><b>add booking</b></ng-template>
+      <ng-template ngbTabContent>
+        <app-add-booking></app-add-booking>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab>
+      <ng-template ngbTabTitle><b>Reviews</b></ng-template>
+      <ng-template ngbTabContent>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab class="logintab">
+      <ng-template ngbTabTitle><label *ngIf='(currentUser | async) else loginlink' class="item" routerLinkActive='active' routerLink="/logout">{{currentUser|async}}</label>
+        <ng-template #loginlink>
+          <label class="item" routerLinkActive='active' routerLink="/login"><b>log in</b></label>
+        </ng-template>
+      </ng-template>
+    </ngb-tab>
+</ngb-tabset>
+</section>
+
+<router-outlet></router-outlet>

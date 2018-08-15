@@ -1,0 +1,17 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1 >
+    <a href="/booking/home" >Welcome to {{title}}!</a>
+  </h1>
+  <a *ngIf='(currentUser | async) else loginlink' class="item" routerLinkActive='active' routerLink="/logout">{{currentUser|async}}</a>
+    <ng-template #loginlink>
+      <a class="item" routerLinkActive='active' routerLink="/login">log in</a>
+    </ng-template>
+  <div class="ui container">
+    <div class="ui two item menu">
+      <a class='item' routerLinkActive='active' 
+        routerLink="/home" ></a>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+

@@ -1,0 +1,91 @@
+<div class="card border-primary infoCard ">
+  <button type="button" class="list-group-item list-group-item-action info text-secondary" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="isCollapsed" aria-controls="bookingDetails" >
+    booking for {{booking.userName}} 
+  </button>
+  <div id="bookingDetails" [ngbCollapse]="isCollapsed">
+    
+    <div class="card-body border-dark " [ngbCollapse]="!isEdit">
+      <app-booking-detail [_booking] = 'booking'></app-booking-detail>
+          
+    </div>  
+  
+    <div [ngbCollapse]="isEdit">
+        
+
+    
+    <form [formGroup] = 'bookingForm' (ngSubmit) = 'onSubmit()' class="form-group" >
+      
+      <div>
+        <br>
+        <label for='userName_id' >username:</label>
+        <input type="text" id="userName_id" formControlName = 'userName' class="form-control" #spy>
+        <br>
+        <label for='startNight_id'>startNight:</label>
+        <div class="input-group">
+            <input class="form-control" placeholder="{{booking.startNight | date}}"
+                   name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" id="startNight_id" formControlName='startNight'>
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                <img src="../../../assets/images/baseline-calendar_today-24px.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+              </button>
+            </div>
+          </div>
+        <label for='endNight_id'>endNight:</label>
+        <div class="input-group">
+            <input class="form-control" placeholder="{{booking.endNight | date}}"
+                   name="dp" [(ngModel)]="model2" ngbDatepicker #d2="ngbDatepicker" id="endNight_id" formControlName='endNight'>
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" (click)="d2.toggle()" type="button">
+                <img src="../../../assets/images/baseline-calendar_today-24px.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+              </button>
+            </div>
+          </div>
+        <label for='nrOfPersons_id'>number of Persons:</label>
+        <br>
+        <select id="nrOfPersons_id" formControlName = 'nrOfPersons' class="form-control">
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select>
+        <label for='wantsSheet_id' >Do you wish sheets? </label>
+        <input type="checkbox" id="wantsSheet_id" formControlName = 'wantsSheet' >
+      </div>
+      <div>
+        <button type="submit" class="btn btn-success"  (click)="isEdit = !isEdit" >save</button>
+      </div>
+    </form>
+    
+  </div>
+      
+      
+      
+      
+      
+      
+      <div class="btn-group-sm ">
+        <button type="button" class="btn btn-primary "  (click)="isEdit = !isEdit" [attr.aria-expanded]="isEdit" >Edit</button>
+      
+      <button type="button" class="btn btn-danger" (click)="removeBooking()" (click)="confirmDelete(contentDelete)" >Delete</button>
+      </div>
+      
+    
+  
+  </div>  
+
+  
+</div>
+  
+<ng-template #contentDelete let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Congratulations</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Booking deleted</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>
+

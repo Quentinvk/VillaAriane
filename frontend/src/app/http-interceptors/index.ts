@@ -1,7 +1,6 @@
-/* "Barrel" of Http Interceptors */
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthenticationInterceptor } from './AuthenticationInterceptor';
-import { BaseUrlInterceptor } from './base-url.Interceptors';
+import { BaseUrlInterceptor } from './BaseUrlInterceptor';
 
 /** Http interceptor providers in outside-in order */
 export const httpInterceptorProviders = [
@@ -18,4 +17,3 @@ export const basehttpInterceptorProviders = [
     multi: true
   }
 ];
-  

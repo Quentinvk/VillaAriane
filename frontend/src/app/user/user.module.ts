@@ -9,7 +9,6 @@ import { HttpModule } from '@angular/http';
 import { RegisterComponent } from './register/register.component';
 import { LogoutComponent } from './logout/logout.component';
 import { basehttpInterceptorProviders } from '../http-interceptors';
-// import { basehttpInterceptorProviders } from '../http-interceptors';
 
 const routes = [
   { path: 'login', component: LoginComponent },

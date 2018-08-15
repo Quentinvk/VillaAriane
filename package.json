@@ -1,20 +1,21 @@
 {
-    "name": "villa-ariane",
+    "name": "frontend",
     "version": "1.0.0",
     "description": "villaAriane demo app",
     "homepage": "https://github.com/Quentinvk",
     "scripts": {
         "start": "node server",
-        "deploy-backend": "git subtree push --prefix backend villaariane-backend master",
-        "build-frontend": "cd villaArianefrontend && ng build --prod",
-        "commit-build-changes": "git add . && git commit -m 'chore(build): build files'",
+        "deploy-backend": "git subtree push --prefix backend vilaariane-backend master",
+        "build-frontend": "cd frontend && ng build --prod",
+        "commit-build-changes":
+         "git add . && git commit -m 'chore(build): build files'",
         "deploy-frontend": "npm run build-frontend && npm run copy && npm run commit-build-changes && git subtree push --prefix serve-frontend villaariane-frontend master",
-        "copy": "cpx 'villaArianefrontend/dist/**' serve-frontend/www"
+        "copy": "cpx 'frontend/dist/**' serve-frontend/www"
     },
     "author": {
         "name": "Quentin van Kesteren",
         "email": "quentin.vk@hotmail.com",
-        "web": "https://github.com/Quentinvk"
+        "web": "https://github.com/Quentinvk/"
     },
     "repository": {
         "type": "git",

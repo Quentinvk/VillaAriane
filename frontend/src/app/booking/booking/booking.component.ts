@@ -20,7 +20,7 @@ export class BookingComponent implements OnInit {
   constructor(private fb : FormBuilder,
     private modalService: NgbModal) { }
 
-  private bookingForm: FormGroup;
+  public bookingForm: FormGroup;
 
   ngOnInit() {
     console.log(this.model);

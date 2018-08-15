@@ -39,7 +39,7 @@ export class AddBookingComponent implements OnInit {
     }    
    
 
-  private booking: FormGroup;
+  public booking: FormGroup;
 
    ngOnInit() {
       console.log(this.fromDate);

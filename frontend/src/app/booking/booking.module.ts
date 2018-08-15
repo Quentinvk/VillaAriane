@@ -6,7 +6,6 @@ import { BookingsComponent } from './bookings/bookings.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BookingDataService } from './booking-data.service';
-import { CalendarComponent } from './calendar/calendar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
@@ -44,7 +43,6 @@ const routes = [
     BookingComponent,
     AddBookingComponent,
     BookingsComponent,
-    CalendarComponent,
     CarouselComponent,
     GalleryComponent,
     StudioComponent,

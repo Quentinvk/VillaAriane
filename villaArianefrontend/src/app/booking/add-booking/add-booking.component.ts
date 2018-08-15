@@ -16,7 +16,7 @@ import { NgbDateStruct, NgbModal } from '../../../../node_modules/@ng-bootstrap/
 })
 export class AddBookingComponent implements OnInit {
     @Output() public newBooking = new EventEmitter<Booking>();
-
+    @Output() public closeCalendar = new EventEmitter();
     @Input() public fromDate: NgbDateStruct;
     @Input() public toDate: NgbDateStruct;
     @Input() public randomBoolean : Boolean;
@@ -48,30 +48,31 @@ export class AddBookingComponent implements OnInit {
         startNight: this.fb.control(Validators.required),
         endNight: this.fb.control( Validators.required),
         nrOfPersons: this.fb.control('2'),
-        wantsSheet: this.fb.control('false')
+        wantsSheet: this.fb.control('true')
       })
       
   }
   
   onSubmit(){
-    console.log(this.booking.value.wantsSheet);
 
     let startNight = new Date();
     startNight.setDate(this.fromDate.day);
-    startNight.setMonth(this.fromDate.month);
+    startNight.setMonth(this.fromDate.month-1);
     startNight.setFullYear(this.fromDate.year);
     let endNight = new Date();
     endNight.setDate(this.toDate.day);
-    endNight.setMonth(this.toDate.month);
+    endNight.setMonth(this.toDate.month-1);
     endNight.setFullYear(this.toDate.year);
+ 
     const booking = new Booking(
       this.booking.value.userName, 
       startNight,
       endNight,
       this.booking.value.nrOfPersons, 
       this.booking.value.wantsSheet);
+      console.log(booking);  
     this.newBooking.emit(booking);
-    
+    this.closeCalendar.emit();
     this.data.addNewBooking(booking).subscribe( () => {},
     (error: HttpErrorResponse) => {
       this.errorMsg = `Error ${error.status} while adding

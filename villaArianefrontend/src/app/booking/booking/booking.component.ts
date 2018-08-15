@@ -1,7 +1,7 @@
 import { Booking } from '../booking.model';
 import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '../../../../node_modules/@angular/forms';
-import { NgbCalendar, NgbModule } from '../../../../node_modules/@ng-bootstrap/ng-bootstrap';
+import { NgbCalendar, NgbModule, NgbModal } from '../../../../node_modules/@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
@@ -17,7 +17,8 @@ export class BookingComponent implements OnInit {
   model2;
   public isCollapsed = true;
   public isEdit = true;
-  constructor(private fb : FormBuilder) { }
+  constructor(private fb : FormBuilder,
+    private modalService: NgbModal) { }
 
   private bookingForm: FormGroup;
 
@@ -41,11 +42,11 @@ export class BookingComponent implements OnInit {
   onSubmit(){
     let startNight = new Date();
     startNight.setDate(this.bookingForm.value.startNight.day);
-    startNight.setMonth(this.bookingForm.value.startNight.month);
+    startNight.setMonth(this.bookingForm.value.startNight.month-1);
     startNight.setFullYear(this.bookingForm.value.startNight.year);
     let endNight = new Date();
     endNight.setDate(this.bookingForm.value.endNight.day);
-    endNight.setMonth(this.bookingForm.value.endNight.month);
+    endNight.setMonth(this.bookingForm.value.endNight.month-1);
     endNight.setFullYear(this.bookingForm.value.endNight.year);
 
       this._booking.setUserName(this.bookingForm.value.userName);
@@ -54,7 +55,12 @@ export class BookingComponent implements OnInit {
       this._booking.setWantsSheet( this.bookingForm.value.wantsSheet);
       this._booking.setNrOfPersons( this.bookingForm.value.nrOfPersons);
 
-      console.log(this._booking);
     this.edit.emit(this._booking);
   }
+
+  confirmDelete(content) {
+    this.modalService.open(content, { size: 'sm' });
+  }
+
+  
 }

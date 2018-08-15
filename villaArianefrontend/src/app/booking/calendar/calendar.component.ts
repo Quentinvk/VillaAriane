@@ -3,7 +3,7 @@ import { BookingDataService } from '../booking-data.service';
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import {NgbDateStruct, NgbCalendar,NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
 import { AddBookingComponent } from '../add-booking/add-booking.component';
-import { Observable } from '../../../../node_modules/rxjs';
+import { Observable } from 'rxjs';
 import { Subject } from 'rxjs/Subject';
 
 

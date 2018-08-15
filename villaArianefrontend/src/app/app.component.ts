@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { AuthenticationService } from './user/authentication.service';
-import { Observable } from '../../node_modules/rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',

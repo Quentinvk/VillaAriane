@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { NgbDateStruct, NgbCalendar } from '../../../../node_modules/@ng-bootstrap/ng-bootstrap';
+import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 
 
 

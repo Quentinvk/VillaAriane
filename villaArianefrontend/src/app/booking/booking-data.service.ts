@@ -26,14 +26,7 @@ export class BookingDataService {
     return body || { };
   }
 
-  //  get bookings(): Observable<any>  {
-  //   return this.http.get(`${_appUrl}/bookings/`, httpOptions)
-  //     .pipe(
-  //       map(this.extractData ),
-  //       catchError(this.handleError)
-  //   );
-    
-  //  }
+
 
   get bookings(): Observable<Booking[]>{
     return this.http.get(`${_appUrl}/bookings/`)

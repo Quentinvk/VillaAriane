@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Booking } from '../booking.model';
 import { ActivatedRoute } from '@angular/router';
 import { BookingDataService } from '../booking-data.service';
-import { HttpErrorResponse } from '../../../../node_modules/@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-booking-detail',

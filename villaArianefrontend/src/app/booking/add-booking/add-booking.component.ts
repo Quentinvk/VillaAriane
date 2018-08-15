@@ -6,7 +6,7 @@ import { Component, EventEmitter, OnInit, Output, Input, ChangeDetectionStrategy
 import { Booking } from '../booking.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthenticationService } from '../../user/authentication.service';
-import { NgbDateStruct, NgbModal } from '../../../../node_modules/@ng-bootstrap/ng-bootstrap';
+import { NgbDateStruct, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-add-booking',

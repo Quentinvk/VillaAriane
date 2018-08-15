@@ -1,7 +1,7 @@
 import { Booking } from '../booking.model';
 import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '../../../../node_modules/@angular/forms';
-import { NgbCalendar, NgbModule, NgbModal } from '../../../../node_modules/@ng-bootstrap/ng-bootstrap';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { NgbCalendar, NgbModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',

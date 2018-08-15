@@ -3,7 +3,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { BookingDataService } from '../booking-data.service';
 import {Booking} from '../booking.model';
 import { AuthenticationService } from '../../user/authentication.service';
-import { Observable } from '../../../../node_modules/rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',

@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { UserModule } from './user/user.module';
-import { HttpClientModule } from '../../node_modules/@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
